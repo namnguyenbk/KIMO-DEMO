@@ -1,6 +1,7 @@
 /**
  * Root Component
  */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
@@ -9,7 +10,6 @@ import IntlWrapper from './modules/Intl/IntlWrapper';
 
 // Import Routes
 import routes from './routes';
-
 // Base stylesheet
 require('./main.css');
 

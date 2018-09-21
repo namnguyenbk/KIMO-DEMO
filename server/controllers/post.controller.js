@@ -78,3 +78,7 @@ export function deletePost(req, res) {
     });
   });
 }
+export function firstAPI(req, res) {
+  const name = 'Nguyen Danh Nam';
+  res.json(name);
+}

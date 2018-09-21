@@ -6,16 +6,16 @@ import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import App from './App';
 import { configureStore } from './store';
-
+import Button from '@material-ui/core/Button';
 // Initialize store
 const store = configureStore(window.__INITIAL_STATE__);
-const mountApp = document.getElementById('root');
+const root = document.getElementById('root');
 
 render(
   <AppContainer>
     <App store={store} />
   </AppContainer>,
-  mountApp
+  root
 );
 
 // For hot reloading of react components
@@ -28,7 +28,7 @@ if (module.hot) {
       <AppContainer>
         <NextApp store={store} />
       </AppContainer>,
-      mountApp
+      root
     );
   });
 }
