@@ -39,13 +39,5 @@ export default (
         });
       }}
     />
-    <Route
-      path="/testFirstAPI"
-      getComponent={(nextState, cb) => {
-        require.ensure([], require => {
-          cb(null, require('./modules/Post/pages/PostDetailPage/PostDetailPage').default);
-        });
-      }}
-    />
   </Route>
 );

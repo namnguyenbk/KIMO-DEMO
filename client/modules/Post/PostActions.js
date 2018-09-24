@@ -40,11 +40,11 @@ export function fetchPosts() {
   };
 }
 
-export function fetchPost(cuid) {
-  return (dispatch) => {
-    return callApi(`posts/${cuid}`).then(res => dispatch(addPost(res.post)));
-  };
-}
+// export function fetchPost(cuid) {
+//   return (dispatch) => {
+//     return callApi(`posts/${cuid}`).then(res => dispatch(addPost(res.post)));
+//   };
+// }
 
 export function deletePost(cuid) {
   return {
