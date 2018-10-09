@@ -2,55 +2,61 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  userName: { type: 'String', required: true },
-  passWord: { type: 'String', required: true },
-  statusID: {
-    id: { type: 'String', required: true },
+  username: {
+    type: 'String', required: true, unique: true,
+    /* match: /^0(1\d{9}|9\d{8})$/  */
+  },
+  password: { type: 'String', required: true },
+  statusid: {
+    id: { type: 'String', required: false },
     des: { type: 'String', required: false },
   },
-  permissionID: {
-    id: { type: 'String', required: true },
-    des: { type: 'String', required: true },
+  permissionid: {
+    id: { type: 'String', required: false },
+    des: { type: 'String', required: false },
   },
   des: { type: 'String', required: false },
 });
 
 const userInfoSchema = new Schema({
-  userID: { type: 'String', required: true },
-  fisrtName: { type: 'String', required: true },
-  midName: { type: 'String', required: false },
-  lastName: { type: 'String', required: true },
+  userid: { type: 'String', required: true },
+  fisrtname: { type: 'String', required: true },
+  midname: { type: 'String', required: false },
+  lastname: { type: 'String', required: true },
   sex: { type: 'String', required: true },
-  phoneNumber: { type: 'String', required: false },
+  phonenumber: { type: 'String', required: false },
   email: { type: 'String', required: true },
   address: { type: 'String', required: false },
   des: { type: 'String', required: false },
 });
 
 const storeSchema = new Schema({
-  ownerID: { type: 'String', required: true },
-  phoneNumber: { type: 'String', required: false },
+  ownerid: { type: 'String', required: true },
+  phonenumber: { type: 'String', required: false },
   email: { type: 'String', required: false },
   address: { type: 'String', required: false },
   des: { type: 'String', required: false },
 });
 
 const productSchema = new Schema({
-  fromStoreID: { type: 'String', required: true },
-  productName: { type: 'String', required: true },
-  productType: {
-    categoryID: { type: 'String', required: true },
-    categoryName: { type: 'String', required: true },
+  fromstoreid: { type: 'String', required: true },
+  productname: { type: 'String', required: true },
+  producttype: {
+    categoryid: { type: 'String', required: true },
+    categoryname: { type: 'String', required: true },
   },
   cost: { type: 'Number', required: true },
-  isDiscount: { type: 'Boolean', required: true },
+  isdiscount: { type: 'Boolean', required: true },
   tag: { type: 'Object', required: false },
-  statusID: { type: 'String', required: true },
+  statusid: { type: 'String', required: true },
   rating: { type: 'Number', required: true },
   des: { type: 'String', required: false },
 });
 
-module.exports = mongoose.model('User', userSchema);
-module.exports = mongoose.model('UserInfo', userInfoSchema);
-module.exports = mongoose.model('Store', storeSchema);
-module.exports = mongoose.model('Product', productSchema);
+module.exports = {
+  User: mongoose.model('User', userSchema),
+  UserInfo: mongoose.model('UserInfo', userInfoSchema),
+  Store: mongoose.model('Store', storeSchema),
+  Product: mongoose.model('Product', productSchema),
+}
+

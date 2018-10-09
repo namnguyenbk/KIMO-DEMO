@@ -12,6 +12,7 @@ const app = new Express();
 const isDevMode = process.env.NODE_ENV === 'development' || false;
 const isProdMode = process.env.NODE_ENV === 'production' || false;
 
+/*
 // Run Webpack dev server in development mode
 if (isDevMode) {
   // Webpack Requirements
@@ -33,7 +34,7 @@ if (isDevMode) {
   }));
   app.use(webpackHotMiddleware(compiler));
 }
-
+*/
 // React And Redux Setup
 import { configureStore } from '../client/store';
 import { Provider } from 'react-redux';
@@ -46,7 +47,7 @@ import Helmet from 'react-helmet';
 import routes from '../client/routes';
 import { fetchComponentData } from './util/fetchData';
 import posts from './routes/post.routes';
-import dummyData from './dummyData';
+const users = require('./routes/user.routes');
 import serverConfig from './config';
 
 // Set native promises as mongoose promise
@@ -59,18 +60,26 @@ if (process.env.NODE_ENV !== 'test') {
       console.error('Please make sure Mongodb is installed and running!'); // eslint-disable-line no-console
       throw error;
     }
-
-    // feed some dummy data in DB.
-    dummyData();
   });
 }
 
 // Apply body Parser and server public assets and routes
 app.use(compression());
-app.use(bodyParser.json({ limit: '20mb' }));
-app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(Express.static(path.resolve(__dirname, '../dist/client')));
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Header', 'Origin, X-Requested-With, Content-Type, Accept , Authorization');
+  if (req.method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+    return res.status(200).json({});
+  }
+  next();
+});
 app.use('/api', posts);
+app.use('/users', users);
 // app.use('/api/');
 
 // Render Initial HTML

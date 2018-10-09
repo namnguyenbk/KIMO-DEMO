@@ -11,7 +11,8 @@
   ],
   "legacyWatch": true,
   "env": {
-    "NODE_ENV": "development"
+    "NODE_ENV": "development",
+    "JWT_KEY": "some-fucking-crazy-shit"
   },
   "ext": "js json"
 }

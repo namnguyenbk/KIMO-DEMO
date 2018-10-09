@@ -23,5 +23,8 @@ const productSchema = new Schema({
   rating: { type: 'Number', required: true },
   des: { type: 'String', required: false },
 });
-module.exports = mongoose.model('Store', storeSchema);
-module.exports = mongoose.model('Product', productSchema);
+module.exports = {
+  Store: mongoose.model('Store', storeSchema),
+  Product: mongoose.model('Product', productSchema),
+};
+

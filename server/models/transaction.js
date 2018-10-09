@@ -16,5 +16,7 @@ const orderDetailSchema = new Schema({
   thruDate: { type: 'Date', required: true },
   des: { type: 'String', required: false },
 });
-module.exports = mongoose.model('Order', orderSchema);
-module.exports = mongoose.model('OrderDetail', orderDetailSchema);
+module.exports = {
+  Order: mongoose.model('Order', orderSchema),
+  OrderDetail: mongoose.model('OrderDetail', orderDetailSchema),
+};
