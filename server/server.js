@@ -10,31 +10,6 @@ const app = new Express();
 // Set Development modes checks
 const isDevMode = process.env.NODE_ENV === 'development' || false;
 const isProdMode = process.env.NODE_ENV === 'production' || false;
-
-/*
-// Run Webpack dev server in development mode
-if (isDevMode) {
-  // Webpack Requirements
-  // eslint-disable-next-line global-require
-  const webpack = require('webpack');
-  // eslint-disable-next-line global-require
-  const config = require('../webpack.config.dev');
-  // eslint-disable-next-line global-require
-  const webpackDevMiddleware = require('webpack-dev-middleware');
-  // eslint-disable-next-line global-require
-  const webpackHotMiddleware = require('webpack-hot-middleware');
-  const compiler = webpack(config);
-  app.use(webpackDevMiddleware(compiler, {
-    noInfo: true,
-    publicPath: config.output.publicPath,
-    watchOptions: {
-      poll: 1000,
-    },
-  }));
-  app.use(webpackHotMiddleware(compiler));
-}
-*/
-
 // Import required modules
 app.set('view engine', 'ejs');
 import posts from './routes/post.routes';
@@ -45,11 +20,19 @@ import serverConfig from './config';
 mongoose.Promise = global.Promise;
 
 // MongoDB Connection
+const dbuser = 'namnguyen98';
+const dbpassword = 'namnguyen98';
+
+const MONGODB_URI = `mongodb://${dbuser}:${dbpassword}@ds055680.mlab.com:55680/kimodb`;
+
 if (process.env.NODE_ENV !== 'test') {
-  mongoose.connect(serverConfig.mongoURL, (error) => {
+  mongoose.connect(MONGODB_URI, (error) => {
     if (error) {
       console.error('Please make sure Mongodb is installed and running!'); // eslint-disable-line no-console
       throw error;
+    }else{
+      console.log("Connect DB KIMODB- Google cloud successful!");
+      
     }
   });
 }
