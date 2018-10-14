@@ -1,0 +1,188 @@
+<!-- <link rel="stylesheet" type="text/css" href="materialBT/css/bootstrap.min.css">
+<script  type="text/javascript" src="materialBT/js/jquery-3.3.1.min.js"></script>
+<script  type="text/javascript" src="materialBT/js/bootstrap.min.js"></script> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.11/css/mdb.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    html,
+body {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    font-weight: normal;
+    overflow-x: hidden;
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased; /* Prevent scroll on narrow devices */
+}
+label{
+    font-weight: normal;
+}
+
+body {
+  padding-top: 130px;
+}
+footer {
+  padding: 30px 0;
+}
+p{
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.navbar{
+    padding-top: 10px;
+    background-color: #ee6e73;
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: white;
+}
+.navbar-inverse {
+    border-color: white;
+}
+.nav-brand{
+    margin-left: -100px;
+}
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+    margin-left: -100px;
+}
+
+.navbar-nav>li>.user {
+    margin-top: 20px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+</style>
+<title>KIMO</title>
+<link rel="shortcut icon" href="http://res.cloudinary.com/hashnode/image/upload/v1455629445/static_imgs/mern/mern-favicon-circle-fill.png"
+    type="image/png" />
+<nav class="navbar navbar-inverse navbar-fixed-top navbar-expand-lg" role="navigation">
+
+    <div class="container" id="ctnbar">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse ">
+            <ul class="nav navbar-nav" role="group">
+                <a class="navbar-brand btn btn-default btn-lg" href="#"  style="font-size: 60px; color: white;"><span style="color: red;">K</span><span
+                        style="color: rgba(255, 0, 200, 0.479)">I</span><span style="color: #000080">M</span><span style="color: #008000">O</span>
+                </a>
+                <li class="nav-item" style="font-size: 17px; margin-top: 10px;"><a href="#" style="color:white;" ><span style="color: black;"class="glyphicon glyphicon-home"
+                            aria-hidden="true"></span>
+                        Trang chủ</a></li>
+                <li style="font-size: 17px; margin-top: 10px;" ><a href="#" style="color:white;" >
+                        <span style="color: black; " class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> KIMO Shop</a></li>
+                <li style="font-size: 17px; margin-top: 10px;"><a href="#" style="color:white;" >
+                        <span style="color: black; " class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Giới thiệu</a></li>
+                <li style="font-size: 17px; margin-top: 10px;"><a href="#" style="color:white;" ><span style="color: black;" class="fa fa-envelope-o"></span> Contact</a></li>
+            </ul>
+            <!-- Search form -->
+
+            <ul class="nav navbar-nav navbar-right" style="cursor: pointer;">
+                <li class="" style="color:white;">
+                    <form class="form-inline md-form form-sm active-cyan-2">
+                        <input class="form-control form-control-sm mr-3 w-75" type="text" style="color:white;" placeholder="Search"
+                            aria-label="Search">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </form>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" style="cursor: pointer;">
+                <li class="nav-item">
+                    <a class="nav-link waves-effect" style="color: white ;">
+                        <span class="badge red z-depth-1 mr-1"> 1 </span>
+                        <i class="fa fa-shopping-cart"></i>
+                        <span class="clearfix d-none d-sm-inline-block"></span>Giỏ hàng</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right right" style="cursor: pointer;">
+                <li>
+                    <a data-toggle="modal" style="color:white;" data-target="#loginModal">
+                        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>login</button>
+                    </a></li>
+            </ul>
+            <ul class="navbar-nav ml-auto nav-flex-icons navbar-right" id="user" style="cursor: pointer; display: none">
+                <li class="nav-item avatar dropdown">
+                  <a class="nav-link dropdown-toggle user" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle z-depth-0 " alt="avatar image" style="width:40px;">
+                    <span id="userName" style="color: white;">Nguyen Danh Nam</span>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
+                    <a class="dropdown-item" href="#">Cửa hàng của tôi</a>
+                    <a class="dropdown-item" href="#"> Thông tin tài khoản</a>
+                    <a class="dropdown-item" href="#"> Đăng xuất</a>
+                  </div>
+                </li>
+              </ul>
+        
+        </div>
+    </div>
+</nav>
+
+<div id="loginModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"> &times;</button>
+                <h3 class="text-center">Đăng nhập</h3>
+            </div>
+            <div class="modal-body">
+                <form class="">
+                    <!-- <div class="form-group">
+                        <label class="sr-only" for="email"><b>Email</b></label>
+                        <input type="text" class="form-control" placeholder="Email" id="email" name="email">
+                    </div> -->
+                    <div class="md-form">
+                            <input type="text" id="userName" name="userName" class="form-control">
+                            <label for="userName">Tên đăng nhập</label>
+                        </div>
+                    <!-- <div class="form-group">
+                        <label class="sr-only" for="password">Mật khẩu</label>
+                        <input type="password" class="form-control" placeholder="Password" id="password" name="password">
+                    </div> -->
+                    <div class="md-form">
+                            <input type="text" id="password" name="password" class="form-control">
+                            <label for="password">Mật khẩu</label>
+                        </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Remember me
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-info btn-floatding">Đăng nhập</button>
+                    <button type="button" class="btn btn-danger btn-round margin" data-dismiss="modal">Huỷ</button><br>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <div class="col-xs-13 col-sm-10 col-sm-push-2">
+            <% include contentHomepage %>
+        </div>
+        <% include sidebar %>
+    </div>
+    <hr>
+    <script>
+        <% include script.js %>
+    </script>
+</div>
+<!--/.container-->
+<!-- Bootstrap tooltips -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.11/js/mdb.min.js"></script>

@@ -6,11 +6,9 @@ import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import App from './App';
 import { configureStore } from './store';
-import Button from '@material-ui/core/Button';
 // Initialize store
 const store = configureStore(window.__INITIAL_STATE__);
 const root = document.getElementById('root');
-
 render(
   <AppContainer>
     <App store={store} />
