@@ -20,18 +20,14 @@ import serverConfig from './config';
 mongoose.Promise = global.Promise;
 
 // MongoDB Connection
-const dbuser = 'namnguyen98';
-const dbpassword = 'namnguyen98';
-
-const MONGODB_URI = `mongodb://${dbuser}:${dbpassword}@ds055680.mlab.com:55680/kimodb`;
 
 if (process.env.NODE_ENV !== 'test') {
-  mongoose.connect(MONGODB_URI, (error) => {
+  mongoose.connect(serverConfig.mongoURL, (error) => {
     if (error) {
       console.error('Please make sure Mongodb is installed and running!'); // eslint-disable-line no-console
       throw error;
     }else{
-      console.log("Connect DB KIMODB- Google cloud successful!");
+      console.log("Connect KIMODB MLab successful!");
       
     }
   });
