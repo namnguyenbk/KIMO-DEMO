@@ -10,7 +10,8 @@ module.exports = function userController() {
         const user = await User.find({ username: req.body.phonenumber });
         if (user.length >= 1) {
           return res.status(409).json({
-            message: ' Phone exists ',
+            code: '9996',
+            message: 'User existed',
           });
         }
         const hash = await bcrypt.hash(req.body.password, 10);
@@ -19,14 +20,15 @@ module.exports = function userController() {
           password: hash,
         });
         const result = await newUser.save();
-        // console.log(result);
         return res.status(201).json({
-          message: 'User created',
+          code: '1000',
+          message: 'OK',
           result,
         });
       } catch (err) {
-        // console.log(err);
         return res.status(500).json({
+          code: '1001',
+          message: 'Can not connect to DB',
           err,
         });
       }
@@ -40,7 +42,8 @@ module.exports = function userController() {
         const user = await User.find({ username: req.body.phonenumber });
         if (user.length < 1) {
           return res.status(401).json({
-            message: 'Auth failed',
+            code: '9995',
+            message: 'User is not validated',
           });
         }
         const result = await bcrypt.compare(req.body.password, user[0].password);
@@ -54,13 +57,16 @@ module.exports = function userController() {
               expiresIn: '1h',
             });
           return res.status(200).json({
-            message: 'Auth successful',
+            code: '1000',
+            message: 'OK',
             token, // save vao local storage va dung ajax de set header = authorization : bearer token
           });
         } throw new Error();
       } catch (err) {
-        return res.status(401).json({
-          message: 'Auth failed',
+        return res.status(500).json({
+          code: '1001',
+          message: 'Can not connect to DB',
+          err,
         });
       }
     }()); // end here.

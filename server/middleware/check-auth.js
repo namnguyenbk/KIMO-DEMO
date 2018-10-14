@@ -8,7 +8,8 @@ module.exports = (req, res, next) => {
     next();
   } catch (err) { // thao luan xem redirect sang dau ( co the la '/' )
     return res.status(401).json({
-      message: 'Auth failed',
+      code: '9998',
+      message: 'Token is invalid',
     });
   }
 };

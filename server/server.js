@@ -22,13 +22,12 @@ mongoose.Promise = global.Promise;
 // MongoDB Connection
 
 if (process.env.NODE_ENV !== 'test') {
-  mongoose.connect(serverConfig.mongoURL, (error) => {
+  mongoose.connect(serverConfig.mongoURL, { useMongoClient: true }, (error) => {
     if (error) {
       console.error('Please make sure Mongodb is installed and running!'); // eslint-disable-line no-console
       throw error;
-    }else{
-      console.log("Connect KIMODB MLab successful!");
-      
+    } else {
+      console.log('Connect KIMODB MLab successful!');
     }
   });
 }
@@ -50,8 +49,8 @@ app.use((req, res, next) => {
 });
 app.use('/api', posts);
 app.use('/users', users);
-app.use('/public', Express.static(path.join(__dirname, "/public")));
-app.use('/materialBT', Express.static(path.join(__dirname, "../view/style/materialBT")));
+app.use('/public', Express.static(path.join(__dirname, '/public"')));
+app.use('/materialBT', Express.static(path.join(__dirname, '../view/style/materialBT')));
 
 // start app
 app.get('/', (req, res) => {
