@@ -85,16 +85,8 @@ export function deletePost(req, res) {
  * @returns void
  */
 export function firstAPI(req, res) {
-  // const name = req.params.name;
-  // res.json({ name });
-  // Post.findOne({ cuid: req.params.cuid }).exec((err, post) => {
-  //   if (err) {
-  //     res.status(500).send(err);
-  //   }
-
-  //   post.remove(() => {
-  //     res.status(200).end();
-  //   });
-  // });
-  res.send('Nguyen Danh Nam');
+  
+  res.status(201).json({
+    nam : 'nam'
+  });
 }

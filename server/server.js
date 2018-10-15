@@ -49,8 +49,9 @@ app.use((req, res, next) => {
 });
 app.use('/api', posts);
 app.use('/users', users);
-app.use('/public', Express.static(path.join(__dirname, '/public"')));
-app.use('/materialBT', Express.static(path.join(__dirname, '../view/style/materialBT')));
+app.use('/public', Express.static(path.join(__dirname, "/public")));
+app.use('/script', Express.static(path.join(__dirname, "../view/script")));
+app.use('/style', Express.static(path.join(__dirname, "../view/style")));
 
 // start app
 app.get('/', (req, res) => {

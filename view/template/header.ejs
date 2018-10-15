@@ -1,0 +1,230 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.11/css/mdb.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+<style>
+    html,
+body {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    font-weight: normal;
+    overflow-x: hidden;
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased; /* Prevent scroll on narrow devices */
+}
+label{
+    font-weight: normal;
+}
+
+body {
+  padding-top: 130px;
+}
+footer {
+  padding: 30px 0;
+}
+p{
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.navbar{
+    padding-top: 10px;
+    background-color: #00838fd5;
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: white;
+}
+.navbar-inverse {
+    border-color: white;
+}
+.nav-brand{
+    margin-left: -100px;
+}
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+    margin-left: -100px;
+}
+
+.navbar-nav>li>.user {
+    margin-top: 20px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+</style>
+<title>KIMO</title>
+<link rel="shortcut icon" href="http://res.cloudinary.com/hashnode/image/upload/v1455629445/static_imgs/mern/mern-favicon-circle-fill.png"
+    type="image/png" />
+<nav class="navbar navbar-inverse navbar-fixed-top navbar-expand-lg cyan darken-3" role="navigation">
+
+    <div class="container" id="ctnbar">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse ">
+            <ul class="nav navbar-nav" role="group">
+                <li class="nav-item nav-brand">
+                    <a class="btn btn-default btn-lg" href="#" style="font-size: 60px; color: white;"><span
+                            style="color: red;">K</span><span style="color: rgba(255, 0, 200, 0.479)">I</span><span style="color: #000080">M</span><span
+                            style="color: #008000">O</span>
+                    </a>
+                </li>
+                <li class="nav-item" style="font-size: 15px; margin-top: 10px;"><a href="#" style="color:white;"><span
+                            style="color: black;" class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                        Trang chủ</a></li>
+                <li style="font-size: 15px; margin-top: 10px;"><a href="#" style="color:white;">
+                        <span style="color: black; " class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                        KIMO Shop</a></li>
+                <li style="font-size: 15px; margin-top: 10px;"><a href="#" style="color:white;">
+                        <span style="color: black; " class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                        Giới thiệu</a></li>
+                <li style="font-size: 15px; margin-top: 10px;"><a href="#" style="color:white;"><span style="color: black;"
+                            class="fas fa-envelope"></span> Contact</a></li>
+            </ul>
+            <!-- Search form -->
+            <ul class="nav navbar-nav navbar-right" style="cursor: pointer;" role="group">
+                <li class="nav-item" id="notLoginBtn">
+                    <a data-toggle="modal" style="color:white;" data-target="#loginModal">
+                        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>login</button>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-effect" style="color: white ;">
+                        <span class="badge red z-depth-1 mr-1"> 1 </span>
+                        <i class="fa fa-shopping-cart"></i>
+                        <span class="clearfix d-none d-sm-inline-block"></span>Giỏ hàng</span>
+                    </a>
+                </li>
+                <li class="" style="color:white;">
+                    <form class="form-inline md-form form-sm active-cyan-2">
+                        <input class="form-control form-control-sm mr-3 w-75" type="text" style="color:white;" placeholder="Search"
+                            aria-label="Search">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </form>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto nav-flex-icons navbar-right" id="userBox" style="cursor: pointer; display: none">
+                <li class="nav-item avatar dropdown">
+                    <a class="nav-link dropdown-toggle user" id="navbarDropdownMenuLink-5" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle z-depth-0 "
+                            alt="avatar image" style="width:40px;">
+                        <span id="userNameBox" style="color: white;"></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
+                        <a class="dropdown-item" href="#"> <span style="color: black; " class="fas fa-store-alt"
+                                aria-hidden="true"></span> Cửa hàng</a>
+                        <a class="dropdown-item" href="#"> <span style="color: black; " class="fa fa-info" aria-hidden="true"></span>
+                             Tài khoản</a>
+                        <a class="dropdown-item" href="#" id="logoutBtn"> <span style="color: black; " class="fa fa-sign-out-alt"
+                                aria-hidden="true"></span>Đăng xuất</a>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<div id="loginModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"> &times;</button>
+                <h3 class="text-center">Đăng nhập</h3>
+            </div>
+            <div class="modal-body">
+                <form class="">
+                    <div class="md-form">
+                        <input type="number" id="userName" name="userName" class="form-control" >
+                        <label for="userName">Tên đăng nhập- số điện thoại</label>
+                    </div>
+                    
+                    <div class="md-form">
+                        <input type="password" id="password" name="password" class="form-control">
+                        <label for="password">Mật khẩu</label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Remember me
+                            <a href="">Forgot password?</a>
+                        </label>
+                    </div>
+                    <a data-toggle="modal" data-dismiss="modal"> <button type="button" id="loginBtn" class="btn btn-info btn-block my-2">Đăng nhập</button> </a>
+                        <button type="button" class="btn btn-danger btn-round center" data-dismiss="modal">Huỷ</button>
+                        <a data-toggle="modal" data-dismiss="modal" data-target="#signupModal"><button type="button" id="gotoSignup" class="btn btn-secondary" >Đăng ký</button></a>
+                    <span class="">or sign in with:</span>
+                        <a type="button" class="light-blue-text mx-2">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a type="button" class="light-blue-text mx-2">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a type="button" class="light-blue-text mx-2">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a type="button" class="light-blue-text mx-2">
+                            <i class="fab fa-github"></i>
+                        </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="signupModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"> &times;</button>
+                    <h3 class="text-center">Đăng ký</h3>
+                </div>
+                <div class="modal-body">
+                    <form class="">
+                        <div class="md-form">
+                            <input type="number" id="userNameSignup" name="userNameSignup" class="form-control" >
+                            <label for="userNameSignup">Số điện thoại- tên đăng nhập</label>
+                        </div>
+                        
+                        <div class="md-form">
+                            <input type="password" id="passwordSignup" name="password" class="form-control">
+                            <label for="password">Mật khẩu</label>
+                        </div>
+                        <div class="md-form">
+                                <input type="password" id="confirmPasswordSignup" name="password" class="form-control">
+                                <label for="password">Xác nhận mật khẩu</label>
+                        </div>
+                        <div class="md-form">
+                                <input type="text" id="fullname" name="fullname" class="form-control" >
+                                <label for="fullname">Tên người dùng</label>
+                        </div>
+                        <a data-toggle="modal" data-dismiss="modal">
+                                <button type="button" id="signupBtn" class="btn btn-info btn-block my-2">Đăng ký</button>
+                        </a>
+                        <button type="button" class="btn btn-danger btn-round center" data-dismiss="modal">Huỷ</button>
+                        <span class="justify-content-center">or sign up with:</span>
+                            <a type="button" class="d-flex light-blue-text mx-2">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a type="button" class="light-blue-text mx-2">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a type="button" class="light-blue-text mx-2">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a type="button" class="light-blue-text mx-2">
+                                <i class="fab fa-github"></i>
+                            </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% include alertCollection %>
