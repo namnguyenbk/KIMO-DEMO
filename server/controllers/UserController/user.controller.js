@@ -9,7 +9,7 @@ module.exports = function userController() {
       try {
         const user = await User.find({ username: req.body.phonenumber });
         if (user.length >= 1) {
-          return res.status(409).json({
+          return res.status(201).json({
             code: '9996',
             message: 'User existed',
           });
@@ -41,7 +41,7 @@ module.exports = function userController() {
       try {
         const user = await User.find({ username: req.body.phonenumber });
         if (user.length < 1) {
-          return res.status(401).json({
+          return res.status(201).json({
             code: '9995',
             message: 'User is not validated',
           });
