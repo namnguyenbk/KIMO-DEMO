@@ -1,0 +1,125 @@
+<form class=" border border-light p-5 d-none">
+
+    <p class="h4 mb-4 text-center">Thêm sản phẩm bán</p>
+
+    <div class="form-row mb-4">
+        <div class="col md-form">
+            <i class="fa fa-pencil prefix"></i>
+            <input type="text" id="productName" class="form-control" placeholder="Tên sản phẩm">
+        </div>
+        <div class="col md-form">
+            <i class="fa fa-tags prefix"></i>
+            <input type="text" id="tags" class="form-control" placeholder="Tên nhánh">
+        </div>
+    </div>
+    <div class="md-form">
+        <i class="fa fa-money prefix"></i>
+        <input type="number" id="price" class="form-control mb-4" placeholder="Giá">
+    </div>
+    <div class="md-form">
+        <select class="browser-default custom-select " id="categoryId">
+            <option selected>Loại sản phẩm</option>
+        </select>
+    </div>
+
+    <div class="form-row mb-6">
+        <label for="">
+                <p class="text-center h6">Địa chỉ</p>
+        </label>
+        
+        <select class=" col browser-default custom-select md-form" id="">
+            <option disable selected value="0">Xã/ phường</option>
+        </select>
+        <select class="col browser-default custom-select md-form" id="district">
+            <option selected value="0">Huyện/ quận</option>
+        </select>
+        <select class=" col browser-default custom-select md-form" id="city">
+            <option selected value="0">Tỉnh/ thành phố</option>
+        </select>
+    </div>
+    <div class="form-row mb-8">
+        <div class="col input-group mb-2 md-form">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="">Ảnh 1</span>
+            </div>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputFile01" aria-describedby="inputFile01">
+                <label class="custom-file-label" for="">Chọn</label>
+            </div>
+        </div>
+        <div class=" col input-group mb-2 md-form">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="">Ảnh 2</span>
+            </div>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputFile02" aria-describedby="inputFile02">
+                <label class="custom-file-label" for="">Chọn</label>
+            </div>
+        </div>
+        <div class="col input-group mb-2 md-form">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="">Ảnh 3</span>
+            </div>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputFile03" aria-describedby="inputFile03">
+                <label class="custom-file-label" for="">Chọn</label>
+            </div>
+        </div>
+        <div class="col input-group mb-2 md-form">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="">Ảnh 4</span>
+            </div>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputFile04" aria-describedby="inputFile04">
+                <label class="custom-file-label" for="">Chọn</label>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <img id="image1" style="width: 200px; height: 200px;" src="#" />
+            </div>
+            <div class="col-sm">
+                <img id="image2" src="#" style="width: 200px; height: 200px;" />
+            </div>
+            <div class="col-sm">
+                <img id="image3" src="#" style="width: 200px; height: 200px;"/>
+            </div>
+            <div class="col-sm">
+                <img id="image4" src="#" style="width: 200px; height: 200px;"/>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <button class="btn btn-info my-4 btn-block" type="button" id="addProductBtn">Đăng sản phẩm</button>
+
+   
+
+
+</form>
+<script>
+    function readURL(input, id) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#' + id).attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#inputFile01").change(function () {
+        readURL(this, 'image1');
+    });
+    $("#inputFile02").change(function () {
+        readURL(this, 'image2');
+    });
+    $("#inputFile03").change(function () {
+        readURL(this, 'image3');
+    });
+    $("#inputFile04").change(function () {
+        readURL(this, 'image4');
+    });
+
+</script>
+<!-- Default form register -->

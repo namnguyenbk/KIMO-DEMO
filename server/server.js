@@ -57,6 +57,9 @@ app.use('/style', Express.static(path.join(__dirname, "../view/style")));
 app.get('/', (req, res) => {
   res.render('../view/template/homePage.ejs');
 });
+app.get('/dms', (req, res) => {
+  res.render('../view/dashboard/dms.ejs');
+});
 app.listen(serverConfig.port, (error) => {
   if (!error) {
     console.log(`MERN is running on port: ${serverConfig.port}! Build something amazing!`); // eslint-disable-line
