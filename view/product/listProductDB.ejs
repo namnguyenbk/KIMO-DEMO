@@ -1,5 +1,4 @@
-<% include addProduct %>
-<table id="listProductDB" class="display" style="width:100%">
+<!-- <table id="listProductDB" class="display" style="width:100%">
     <thead>
         <tr>
             <th>Tên sản phẩm</th>
@@ -18,24 +17,27 @@
             <th>Tình trạng</th>
         </tr>
     </tfoot>
-</table>
+</table> -->
 <script>
-    $(document).ready(function() {
-    $('#listProductDB').DataTable( {
-        "processing": true,
-        "serverSide": true,
-        "ajax": {
-            "url": "",
-            "type": "POST"
-        },
-        "columns": [
-            { "data": "product_name" },
-            { "data": "category_id" },
-            { "data": "price" },
-            { "data": "rate" },
-            { "data": "status" },
-        ]
-    } );
-} );
+    //     $(document).ready(function() {
+    //     $('#listProductDB').DataTable( {
+    //         "processing": true,
+    //         "serverSide": true,
+    //         "ajax": {
+    //             "url": "#",
+    //             "type": "POST"
+    //         },
+    //         "columns": [
+    //             { "data": "product_name" },
+    //             { "data": "category_id" },
+    //             { "data": "price" },
+    //             { "data": "rate" },
+    //             { "data": "status" },
+    //         ]
+    //     } );
+    // } );
+    // $(document).ready(function () {
+        
+    // });
 
 </script>

@@ -1,67 +1,101 @@
 <style>
-    #sidebar{
+  #sidebar {
+    font-size: 14px;
+  }
+  .headerListCate{
+    background: #3a7bd5;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #3a6073, #3a7bd5);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #3a6073, #3a7bd5) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  }
+  .list-group-item {
+    border: none;
+    border: 0%;
+    border-bottom: solid 0.5px rgb(208, 229, 247);
+    background: #6190E8;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #A7BFE8, #6190E8);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, rgb(195, 210, 236), #6190E8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+  a.ctg{
+    color: white !important;
+  }
+
+  @media screen and (max-width: 767px) {
+    .row-offcanvas {
+      position: relative;
+      -webkit-transition: all .25s ease-out;
+      -o-transition: all .25s ease-out;
+      transition: all .25s ease-out;
     }
-    .list-group-item.active{
-        background-color: #26a69a;
-        border-color: #26a69a;
+
+    .row-offcanvas-right {
+      right: 0;
     }
-    @media screen and (max-width: 767px) {
-  .row-offcanvas {
-    position: relative;
-    -webkit-transition: all .25s ease-out;
-         -o-transition: all .25s ease-out;
-            transition: all .25s ease-out;
-  }
- 
-  .row-offcanvas-right {
-    right: 0;
-  }
 
-  .row-offcanvas-left {
-    left: 0;
-  }
+    .row-offcanvas-left {
+      left: 0;
+    }
 
-  .row-offcanvas-right
-  .sidebar-offcanvas {
-    right: -60%; /* 6 columns */
-  }
+    .row-offcanvas-right .sidebar-offcanvas {
+      right: -60%;
+      /* 6 columns */
+    }
 
-  .row-offcanvas-left
-  .sidebar-offcanvas {
-    left: -60%; /* 6 columns */
-  }
+    .row-offcanvas-left .sidebar-offcanvas {
+      left: -60%;
+      /* 6 columns */
+    }
 
-  .row-offcanvas-right.active {
-    right: 60%; /* 6 columns */
-  }
+    .row-offcanvas-right.active {
+      right: 60%;
+      /* 6 columns */
+    }
 
-  .row-offcanvas-left.active {
-    left: 60%; /* 6 columns */
-  }
+    .row-offcanvas-left.active {
+      left: 60%;
+      /* 6 columns */
+    }
 
-  .sidebar-offcanvas {
-    position: absolute;
-    top: 0;
-    width: 60%; /* 6 columns */
+    .sidebar-offcanvas {
+      position: absolute;
+      top: 0;
+      width: 60%;
+      /* 6 columns */
+    }
   }
-}
 </style>
 <div class="col-xs-2 col-sm-2 col-sm-pull-10 sidebar-offcanvas" id="sidebar">
-        <div class="list-group">
-            <a href="#" class="list-group-item active text-center "><span class="glyphicon glyphicon-list" aria-hidden="true"></span>Danh mục sản phâm </a>
-            <div class="waves-effect"> <a href="#" class="list-group-item ">Áo thun</a></div>
-            <div class="waves-effect"> <a href="#" class="list-group-item ">Áo sơ mi</a></div>
-            <div class="waves-effect"> <a href="#" class="list-group-item ">Áo khoác</a></div>
-            <div class="waves-effect"> <a href="#" class="list-group-item ">Áo dài tay</a></div>
-            <div class="waves-effect"> <a href="#" class="list-group-item ">Giày, dép</a></div>
-            <div class="waves-effect"> <a href="#" class="list-group-item ">Đồ lót, đồ bơi</a></div>
-            <div class="waves-effect"> <a href="#" class="list-group-item ">Mũ, nón</a></div>
-            <div class="waves-effect"> <a href="#" class="list-group-item ">Áo thun</a></div>
-            <div class="waves-effect"> <a href="#" class="list-group-item">Quần bò</a>  </div>
-            <div class="waves-effect"><a href="#" class="list-group-item">Quần short</a> </div>
-            <div class="waves-effect"> <a href="#" class="list-group-item">Quần vải</a>  </div>
-            <div class="waves-effect"> <a href="#" class="list-group-item">Veston</a> </div>
-            <div class="waves-effect"> <a href="#" class="list-group-item">Váy</a></div>
-            <div class="waves-effect"> <a href="#" class="list-group-item">Phụ kiện quần áo</a> </div>         
-        </div>
-    </div>
+  <div class="list-group list-group-flush">
+    <a href="#" class="list-group-item text-center headerListCate ctg"><span class="glyphicon glyphicon-list" aria-hidden="true"></span>Danh
+      mục sản phâm </a>
+    <div class="waves-effect"> <a href="#" class="list-group-item ctg"><i class="fa fa-angle-right left" style="float:left;"
+          aria-hidden="true"></i>Áo thun</a></div>
+    <div class="waves-effect"> <a href="#" class="list-group-item ctg"> <i class="fa fa-angle-right left" style="float:left;"
+          aria-hidden="true"></i>Áo sơ mi, áo dài tay</a></div>
+    <div class="waves-effect"> <a href="#" class="list-group-item ctg"> <i class="fa fa-angle-right left" style="float:left;"
+          aria-hidden="true"></i>Áo khoác, áo mùa thu</a></div>
+    <div class="waves-effect"> <a href="#" class="list-group-item ctg"><i class="fa fa-angle-right left" style="float:left;"
+          aria-hidden="true"></i>Giày, dép</a></div>
+    <div class="waves-effect"> <a href="#" class="list-group-item ctg"><i class="fa fa-angle-right left" style="float:left;"
+          aria-hidden="true"></i>Đồ lót, đồ bơi</a></div>
+    <div class="waves-effect"> <a href="#" class="list-group-item ctg"><i class="fa fa-angle-right left" style="float:left;"
+          aria-hidden="true"></i>Mũ, nón, phụ kiện</a></div>
+    <div class="waves-effect"> <a href="#" class="list-group-item ctg"><i class="fa fa-angle-right left" style="float:left;"
+          aria-hidden="true"></i>Quần bò, quần short</a> </div>
+    <div class="waves-effect"> <a href="#" class="list-group-item ctg"><i class="fa fa-angle-right left" style="float:left;"
+          aria-hidden="true"></i>Veston, quần vải</a> </div>
+    <div class="waves-effect"> <a href="#" class="list-group-item ctg"><i class="fa fa-angle-right left" style="float:left;"
+          aria-hidden="true"></i>Váy, áo dài</a></div>
+  </div>
+</div>
+<style>
+  #headerListCate {
+    background: #7F7FD5;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  }
+</style>

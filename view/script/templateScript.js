@@ -1,3 +1,12 @@
+$(document).ready(function(){
+    if (typeof(Storage) !== "undefined") {
+        let userName = localStorage.getItem("userName");
+        if (userName !== "") {
+            updateUserBox( userName, '', 'logged');
+        }
+    } else {
+    }   
+});
 $("#display").on("click", function (event) {
     $("#sidebar").hide();
 });
@@ -23,7 +32,8 @@ $("#loginBtn").click(function () {
                 
             }
             showSuccessNotify("Xin chào" + data['fullname']);
-            updateUserBox(data['fullname'], '', 'logged')
+            updateUserBox(data['fullname'], '', 'logged');
+            localStorage.setItem("userName", "Nguyen Danh Nam");
         }
     });
 });
@@ -64,8 +74,8 @@ $('#logoutBtn').on('click', function () {
 var updateUserBox = (fullname, avatar, status) => {
     if (status == "logged") {
         $('#notLoginBtn').hide();
-        $('#userBox').show('fast', fullname => {
-            $('userNameBox').html = fullname;
+        $('#userBox').show('fast', () => {
+            $('#userNameBox').html(fullname) ;
         });
     } else {
         $('#notLoginBtn').show();

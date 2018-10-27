@@ -1,11 +1,19 @@
 <!-- <link rel="stylesheet" type="text/css" href="materialBT/css/bootstrap.min.css">
 <script  type="text/javascript" src="materialBT/js/jquery-3.3.1.min.js"></script>
 <script  type="text/javascript" src="materialBT/js/bootstrap.min.js"></script> -->
+<style>
+    main{
+        background: #DAE2F8;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #D6A4A4, #DAE2F8);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #D6A4A4, #DAE2F8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+    }
+    
+</style>
 <% include header %>
 <div class="container-fluid">
     <div class="row row-offcanvas row-offcanvas-right">
-        <div class="col-xs-13 col-sm-10 col-sm-push-2">
+        <div class="col-xs-13 col-sm-10 col-sm-push-2 main">
                 <% include contentHomepage %>
         </div>
         <div id="sidebar">

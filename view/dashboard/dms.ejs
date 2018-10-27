@@ -6,23 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Quản lí tài khoản</title>
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Bootstrap core CSS -->
     <link href="style/dashboard/css/bootstrap.min.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-    <!-- Material Design Bootstrap -->
     <link href="style/dashboard/css/mdb.min.css" rel="stylesheet">
-    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.11/css/mdb.min.css" rel="stylesheet"> -->
-    <!-- Your custom styles (optional) -->
+    <link href="style/dashboard/css/addons/datatables.min.css" rel="stylesheet">
     <link href="style/dashboard/css/style.css" rel="stylesheet">
+
 </head>
+<style>
+    footer{
+        background: #0cebeb;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    }
+</style>
 
 <body class="grey lighten-3">
     <!--Main Navigation-->
     <header>
         <!-- Navbar -->
-        <nav class="navbar fixed-top navbar-expand-lg navbar-light scrolling-navbar white">
+        <nav class="navbar  navbar-expand-lg navbar-light scrolling-navbar " style="background: #7F7FD5;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        ">
             <div class="container-fluid">
                 <!-- Brand -->
                 <a class="navbar-brand waves-effect" href="/">
@@ -54,27 +61,13 @@
                             </a>
                         </li>
                     </ul>
-
-                    <!-- Right -->
-                    <!-- <ul class="navbar-nav nav-flex-icons">
-                        <li class="nav-item">
-                            <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
-                                <i class="fa fa-twitter"></i>
-                            </a>
-                        </li>
-                    </ul> -->
                     <ul class="navbar-nav ml-auto nav-flex-icons navbar-right" id="userBox" style="cursor: pointer;">
                         <li class="nav-item avatar dropdown">
                             <a class="nav-link dropdown-toggle user" id="navbarDropdownMenuLink-5" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                                 <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle z-depth-0 "
                                     alt="avatar image" style="width:40px;">
-                                <span id="userNameBox">Nam</span>
+                                <span id="userNameBox"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
                                 <a class="dropdown-item" href="#" id="logoutBtn"> <span style="color: black; " class="fa fa-sign-out-alt"
@@ -93,7 +86,6 @@
             <a class="logo-wrapper waves-effect">
                 <img src="https://mdbootstrap.com/img/logo/mdb-email.png" class="img-fluid" alt="">
             </a>
-
             <div class="list-group list-group-flush">
                 <a href="#" class="list-group-item active waves-effect">
                     <i class="fa fa-pie-chart mr-3"></i>Thống kê bán hàng
@@ -120,12 +112,19 @@
     </header>
     <!--Main Navigation-->
     <!--Main layout-->
-    <div id="mainmain">
-        <% include main %>
+    <div id="main">
+        <div class="d-none">
+            <% include main %>
+        </div>
+
+        <% include ../product/listproduct %>
     </div>
+
+
+
     <!--Main layout-->
     <!--Footer-->
-    <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn " style="margin-top: 10px;">
+    <footer class="page-footer text-center font-small  mt-4 wow fadeIn " style="margin-top: 10px;">
         <hr class="my-4">
         <!-- Social icons -->
         <div class="pb-4">
@@ -154,35 +153,64 @@
                 <i class="fa fa-codepen mr-3"></i>
             </a>
         </div>
-        <!-- Social icons -->
-        <!--Copyright-->
         <div class="footer-copyright py-3">
             © 2018 Bản quyền:
             <a href="https://kimowebapp.herokuapp.com" target="_blank"> CodeMonster.com </a>
         </div>
-        <!--/.Copyright-->
-
     </footer>
-    <!--/.Footer-->
-
-    <!-- SCRIPTS -->
-    <!-- JQuery -->
     <script type="text/javascript" src="style/dashboard/js/jquery-3.3.1.min.js"></script>
-    <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="style/dashboard/js/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
     <script type="text/javascript" src="style/dashboard/js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
     <script type="text/javascript" src="style/dashboard/js/mdb.min.js"></script>
-    <!-- Initializations -->
-    <script type="text/javascript">
-        // Animations initialization
-        new WOW().init();
-    </script>
+    <script type="text/javascript" src="style/dashboard/js/addons/datatables.min.js"></script>
 
-    <!-- Charts -->
+    <script type="text/javascript">
+        new WOW().init();
+        $(document).ready(function () {
+            if (typeof (Storage) !== "undefined") {
+                let userName = localStorage.getItem("userName");
+                if (userName !== "") {
+                    updateUserBox(userName, '', 'logged');
+                }
+            } else {
+            }
+        });
+        var updateUserBox = (fullname, avatar, status) => {
+            if (status == "logged") {
+                $('#notLoginBtn').hide();
+                $('#userBox').show('fast', () => {
+                    $('#userNameBox').html(fullname);
+                });
+            } else {
+                $('#notLoginBtn').show();
+                $('#userBox').hide();
+            }
+
+        }
+
+        function readURL(input, id) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#' + id).attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#inputFile01").change(function () {
+            readURL(this, 'image1');
+        });
+        $("#inputFile02").change(function () {
+            readURL(this, 'image2');
+        });
+        $("#inputFile03").change(function () {
+            readURL(this, 'image3');
+        });
+        $("#inputFile04").change(function () {
+            readURL(this, 'image4');
+        });
+    </script>
     <script>
-        // Line
         var ctx = document.getElementById("myChart").getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',
@@ -232,8 +260,6 @@
                 }
             }
         });
-
-        //pie
         var ctxP = document.getElementById("pieChart").getContext('2d');
         var myPieChart = new Chart(ctxP, {
             type: 'pie',
