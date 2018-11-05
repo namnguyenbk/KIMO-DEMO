@@ -20,9 +20,18 @@ module.exports = function userController() {
           password: hash,
         });
         const result = await newUser.save();
+        const token = jwt.sign({
+          // them 1 so truong khi deploy
+          phonenumber: req.body.phonenumber,
+        },
+        process.env.JWT_KEY,
+          {
+            expiresIn: '1h',
+          });
         return res.status(201).json({
           code: '1000',
           message: 'OK',
+          token,
           result,
         });
       } catch (err) {
@@ -36,6 +45,7 @@ module.exports = function userController() {
   };
 
   const signIn = (req, res) => {
+    console.log(req.userData);
     if (req.userData) res.redirect('/');
     (async function authUser() {
       try {
@@ -50,9 +60,9 @@ module.exports = function userController() {
         if (result) {
           const token = jwt.sign({
             // them 1 so truong khi deploy
-            phonenumber: user[0].phonenumber,
+            phonenumber: user[0].username,
           },
-            process.env.JWT_KEY,
+          process.env.JWT_KEY,
             {
               expiresIn: '1h',
             });

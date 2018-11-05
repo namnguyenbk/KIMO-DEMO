@@ -7,9 +7,6 @@ module.exports = (req, res, next) => {
     req.userData = decoded;
     next();
   } catch (err) { // thao luan xem redirect sang dau ( co the la '/' )
-    return res.status(401).json({
-      code: '9998',
-      message: 'Token is invalid',
-    });
+    next();
   }
 };

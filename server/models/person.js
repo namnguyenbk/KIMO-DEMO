@@ -56,7 +56,5 @@ const productSchema = new Schema({
 module.exports = {
   User: mongoose.model('User', userSchema),
   UserInfo: mongoose.model('UserInfo', userInfoSchema),
-  Store: mongoose.model('Store', storeSchema),
-  Product: mongoose.model('Product', productSchema),
-}
+};
 
