@@ -1,6 +1,7 @@
 const { Product } = require('../../models/product');
 const { User } = require('../../models/person');
 const { Store } = require('../../models/product');
+const { Category } = require('../../models/product');
 module.exports = function productController() {
   const getListProducts = (req, res) => {
     (async function findProduct() {
@@ -138,7 +139,7 @@ module.exports = function productController() {
           });
         }
         const userPhoneNumber = req.body.phonenumber;
-        console.log(userPhoneNumber);
+        console.log(req.body);
         const user = await User.find({ username: userPhoneNumber });
         if (user.length < 1) {
           return res.status(401).json({
@@ -177,11 +178,228 @@ module.exports = function productController() {
       }
     }());
   };
+
+
+  const addCateg = (req, res) => {
+    (async function findProduct() {
+      try {
+        const categoryName_ = req.body.categoryName;
+        const categoryID_ = req.body.categoryID;
+        const newCategory = new Category({
+          categoryID: categoryID_,
+          categoryName: categoryName_,
+        });
+
+        newCategory.save((err, store) => {
+          if (err) {
+            return res.status(500).json({
+              code: 9999,
+              message: 'can not save to database',
+            });
+          }
+
+          return res.status(200).json({
+            code: 1000,
+            message: 'add categ successfully',
+            store,
+          });
+        });
+
+      } catch (error) {
+        return res.status(500).json({
+          code: '1001',
+          message: 'Can not connect to DB',
+          error,
+        });
+      }
+    }());
+  };
+
+  const getCategories = (req, res)=>{
+    (async function findProduct() {
+      let categories;
+      try {
+        categories = await Category.find();
+        return res.status(200).json({
+          code: 1000,
+          message: 'get list categories successfull!',
+          data: categories,
+        });
+      } catch (error) {
+        return res.status(500).json({
+          code: '1001',
+          message: 'Can not connect to DB',
+          error,
+        });
+      }
+    }());
+  };
+
+  const editProduct = (req, res)=>{
+    (async function findProduct() {
+      try {
+        if (!req.userData) {
+          console.log(req.userData);
+          return res.status(401).json({
+            code: 9995,
+            message: 'user is not valid sign in or sign up to continue',
+          });
+        }
+
+        const productId = req.body.productId;
+        const phoneNumber = req.userData.phonenumber;
+        const users = await User.find({ username: phoneNumber });
+        if (users.length < 1) {
+          return res.status(401).json({
+            code: '9995',
+            message: 'User is not validated',
+          });
+        }
+        const stores = await Store.find({ownerID: users[0]._id});
+        if (stores.length < 1) {
+          return res.status(401).json({
+            code: '9995',
+            message: 'No store found! create new store!',
+          });
+        }
+        const products = await Product.find({
+          _id: productId,
+          fromStoreID: stores[0]._id,
+        });
+
+        if(products.length < 1){
+          return res.status(401).json({
+            code: '9995',
+            message: 'No product found!',
+          });
+        }
+
+        const fromStoreID_ = stores[0]._id;
+        const productName_ = req.body.productName;
+        const categoryid_ = req.body.category_id;
+        const cost_ = req.body.cost;
+        const brand_ = req.body.brand;
+        const discount_ = req.body.discount;
+        const statusID_ = req.body.statusID;
+        const des_ = req.body.des;
+        
+        products[0].set(
+          {
+            fromStoreID: fromStoreID_,
+            productName: productName_,
+            productType: {
+              categoryID: categoryid_,
+            },
+            cost: cost_,
+            brand: brand_,
+            discount: discount_,
+            statusID: statusID_,
+            details: {
+              des: des_,
+            },
+          }
+        );
+        products[0].save(function (err, updateProduct) {
+          if (err) return handleError(err);
+          res.send(updateProduct);
+        });
+
+        res.status(200).json({
+          mes: 'ok',
+          product: products[0],
+        });
+
+        console.log(req.userData);
+        res.json({
+          mes: 'ok',
+        });
+      } catch (error) {
+        return res.status(500).json({
+          code: '1001',
+          message: 'Can not connect to DB',
+          error,
+        });
+      }
+    }());
+  };
+
+  const deleteProduct = (req, res)=>{
+    (async function findProduct() {
+      try {
+        if (!req.userData) {
+          console.log(req.userData);
+          return res.status(401).json({
+            code: 9995,
+            message: 'user is not valid sign in or sign up to continue',
+          });
+        }
+
+        const productId = req.body.productId;
+        const phoneNumber = req.userData.phonenumber;
+        const users = await User.find({ username: phoneNumber });
+        if (users.length < 1) {
+          return res.status(401).json({
+            code: '9995',
+            message: 'User is not validated',
+          });
+        }
+        const stores = await Store.find({ownerID: users[0]._id});
+        if (stores.length < 1) {
+          return res.status(401).json({
+            code: '9995',
+            message: 'No store found! create new store!',
+          });
+        }
+        // const products = await Product.find({
+        //   _id: productId,
+        //   fromStoreID: stores[0]._id,
+        // });
+
+        // if(products.length < 1){
+        //   return res.status(401).json({
+        //     code: '9995',
+        //     message: 'No product found!',
+        //   });
+        // }
+
+        Product.deleteOne({
+          _id: productId,
+          fromStoreID: stores[0]._id,
+        },function (err) {
+          if (err) return handleError(err);
+          // deleted at most one tank document
+        });
+
+
+        res.status(200).json({
+          mes: 'ok',
+          //product: products[0],
+          deleted: true,
+        });
+
+        console.log(req.userData);
+        res.json({
+          mes: 'ok',
+        });
+      } catch (error) {
+        return res.status(500).json({
+          code: '1001',
+          message: 'Can not connect to DB',
+          error,
+        });
+      }
+    }());
+  };
+
   return {
     getListProducts,
     getProductDetail,
     addProduct,
     addStore,
+    addCateg,
+    getCategories,
+    editProduct,
+    deleteProduct,
   };
 };
 
