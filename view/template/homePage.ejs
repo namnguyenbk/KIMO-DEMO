@@ -1,37 +1,34 @@
-<!-- <link rel="stylesheet" type="text/css" href="materialBT/css/bootstrap.min.css">
-<script  type="text/javascript" src="materialBT/js/jquery-3.3.1.min.js"></script>
-<script  type="text/javascript" src="materialBT/js/bootstrap.min.js"></script> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.13/css/mdb.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+
 <style>
-    main{
-        background: #DAE2F8;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #D6A4A4, #DAE2F8);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #D6A4A4, #DAE2F8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-    }
-    
 </style>
-<% include header %>
-<div class="container-fluid">
-    <div class="row row-offcanvas row-offcanvas-right">
-        <div class="col-xs-13 col-sm-10 col-sm-push-2 main">
-                <% include contentHomepage %>
-        </div>
-        <div id="sidebar">
-            <% include sidebar %>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+<link rel="shortcut icon" href="http://res.cloudinary.com/hashnode/image/upload/v1455629445/static_imgs/mern/mern-favicon-circle-fill.png"
+    type="image/png" />
+    <title>KIMO</title>
+    <% include header %>
+<% include ../product/listProduct %>
 
-    </div>
-    <!-- <button id="display" style="width: 300px; height: 30px;">Hide  sidebar</button>
-    <button id="hide" style="width: 300px; height: 30px;">Show  sidebar</button> -->
-    <hr>
-</div>
 <% include footer %>
+</html>
+
 <!--/.container-->
 <!-- Bootstrap tooltips -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.11/js/mdb.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.13/js/mdb.min.js"></script>
 <script type="text/javascript" src="script/templateScript.js"></script>
+<script type="text/javascript" src="script/userScript.js"></script>
 <script type="text/javascript" src="script/bootstrap-notify.min.js"></script>

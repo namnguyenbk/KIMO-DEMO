@@ -14,3 +14,18 @@ var showFailNotify =  message => {
         type: 'danger'
     });
 }
+
+var showDangerNotify = message => {
+    $.notify({
+        title: '<strong>Cảnh báo! </strong>',
+        message: message,
+        
+    },{
+        type: 'warning',
+        placement : {
+            from: 'bottom',
+        align: 'right'
+        }
+    });
+   
+}

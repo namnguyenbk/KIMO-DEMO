@@ -1,10 +1,4 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.11/css/mdb.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
-    crossorigin="anonymous">
-<style>
+<!-- <style>
     html,
 body {
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
@@ -31,7 +25,7 @@ p{
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
-.navbar{
+.top{
     padding-top: 10px;
     background-image : url('public/image/back2.jpg'); 
     background-repeat: no-repeat; 
@@ -60,16 +54,14 @@ p{
 .nav2{
     background-color: hsla(0, 22%, 23%, 0.322);
 }
-.btn-lg{
+.logo{
     background: #780206;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #061161, #780206);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #061161, #780206) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-</style>
-<title>KIMO</title>
-<link rel="shortcut icon" href="http://res.cloudinary.com/hashnode/image/upload/v1455629445/static_imgs/mern/mern-favicon-circle-fill.png"
-    type="image/png" />
-<nav class="navbar navbar-inverse navbar-fixed-top navbar-expand-lg " role="navigation">
+</style> -->
+
+<!-- <nav class="navbar navbar-inverse navbar-fixed-top navbar-expand-lg top" role="navigation" >
 
     <div class="container" id="ctnbar">
         <div class="navbar-header">
@@ -88,18 +80,18 @@ background: linear-gradient(to right, #061161, #780206) !important; /* W3C, IE 1
                     </a>
                 </li>
                 <li class="nav-item nav2" style="font-size: 18px; margin-top: 10px;"><a href="#" style="color:white;"><span
-                            style="color: black;" class="glyphicon glyphicon-home icon-lg" aria-hidden="true"></span>
+                             class="glyphicon glyphicon-home icon-lg" aria-hidden="true"></span>
                         Trang chủ</a></li>
                 <li class="nav-item nav2" style="font-size: 18px; margin-top: 10px;"><a href="#" style="color:white;">
-                        <span style="color: black; " class="glyphicon glyphicon-shopping-cart icon-lg" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-shopping-cart icon-lg" aria-hidden="true"></span>
                         Tin tức</a></li>
                 <li class="nav-item nav2" style="font-size: 18px; margin-top: 10px;"><a href="#" style="color:white;">
-                        <span style="color: black; " class="glyphicon glyphicon-info-sign icon-lg" aria-hidden="true"></span>
+                        <span  class="glyphicon glyphicon-info-sign icon-lg" aria-hidden="true"></span>
                         Giới thiệu</a></li>
                 <li class="nav-item nav2" style="font-size: 18px; margin-top: 10px;"><a href="#" style="color:white;"><span
-                            style="color: black;" class="fas fa-envelope icon-lg"></span> Contact</a></li>
+                             class="fas fa-envelope icon-lg"></span> Contact</a></li>
             </ul>
-            <!-- Search form -->
+            
             <ul class="nav navbar-nav navbar-right" style="cursor: pointer;" role="group">
                 <li class="nav-item" id="notLoginBtn">
                     <a data-toggle="modal" style="color:white;" data-target="#loginModal">
@@ -116,7 +108,7 @@ background: linear-gradient(to right, #061161, #780206) !important; /* W3C, IE 1
                 <li class="" style="color:white;">
                     <form class="form-inline md-form form-sm active-cyan-2">
                         <input class="form-control form-control-sm mr-3 w-75" type="text" style="color:white;"
-                            placeholder="Search" aria-label="Search">
+                            placeholder="Search" aria-label="Search" id="search">
                         <i class="fa fa-search" aria-hidden="true"></i>
                     </form>
                 </li>
@@ -140,9 +132,9 @@ background: linear-gradient(to right, #061161, #780206) !important; /* W3C, IE 1
 
         </div>
     </div>
-</nav>
+</nav> -->
 
-<div id="loginModal" class="modal fade" role="dialog">
+<!-- <div id="loginModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -188,9 +180,9 @@ background: linear-gradient(to right, #061161, #780206) !important; /* W3C, IE 1
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
-<div id="signupModal" class="modal fade" role="dialog">
+<!-- <div id="signupModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -237,5 +229,181 @@ background: linear-gradient(to right, #061161, #780206) !important; /* W3C, IE 1
             </div>
         </div>
     </div>
-</div>
+</div> -->
+<style>
+    #avatar{
+            width: 40px;
+        }
+    
+    </style>
+<nav class="mb-1 navbar navbar-expand-lg stylish-color-dark lighten-1" id="header">
+    <a href="/">
+        <button type="button" class="btn btn-info navbar-brand" style=" font-size: 30px; padding: 5px 15px 5px 15px; width: 150px;">
+
+            KIMO
+        </button>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-5"
+        aria-controls="navbarSupportedContent-5" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse text-white" id="navbarSupportedContent-5">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active ml-3">
+                <a class="nav-link border rounded text-white" href="/">
+                    <i class="fa fa-home " aria-hidden="true"></i> Trang chủ
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item ml-3">
+                <a class="nav-link border rounded text-white" href="/new">
+                    <i class="fa fa-newspaper-o" aria-hidden="true"></i> Tin tức
+                </a>
+            </li>
+            <li class="nav-item ml-3">
+                <a class="nav-link border rounded text-white" href="/info">
+                    <i class="fa fa-info" aria-hidden="true"></i> Giới thiệu
+                </a>
+            </li>
+            <!-- <li class="nav-item ml-3">
+                <a class="nav-link" href="#">
+                    <i class="fa fa-github" aria-hidden="true"></i>
+                </a>
+            </li> -->
+        </ul>
+        <ul class="navbar-nav nav-brand">
+            <ul class="list-unstyled">
+                <li class="list-inline-item">
+                    <button type="button" class="btn btn-info btn-circle btn-lg">
+                        <i class="fa fa-github"></i>
+                    </button>
+                </li>
+                <li class="list-inline-item">
+                    <button type="button" class="btn btn-danger btn-circle btn-lg">
+                        <i class="fa fa-google-plus"></i>
+                    </button>
+                </li>
+            </ul>
+        </ul>
+        <ul class="navbar-nav ml-auto nav-flex-icons" style="display: none;" id="userBox">
+            <li class="nav-item">
+                <a class="nav-link waves-effect waves-light">1
+                    <i class="pink-text fa fa-envelope"></i>
+                </a>
+            </li>
+            <li class="nav-item avatar dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" id="avatar" class="rounded-circle z-depth-0"
+                        alt="avatar image">
+                </a>
+                <div class="dropdown-menu dropdown-menu-left dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
+                    <a class="dropdown-item" href="dms">
+                        <i class="fa fa-user" aria-hidden="true"></i> Trang cá nhân</a>
+                    <a class="dropdown-item" href="#" id="logoutBtn">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i> Đăng xuất</a>
+                </div>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto nav-flex-icons" id="">
+            <li class="nav-item">
+                <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header text-center">
+                                <h4 class="modal-title w-100 font-weight-bold light-blue-text">Đăng nhập </h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body mx-3">
+                                <div class="md-form mb-5">
+                                    <i class="fa fa-phone prefix text-default"></i>
+                                    <input type="number" id="userName" class="form-control validate">
+                                    <label data-error="Số điện thoại không hợp lệ" data-success="" for="userName">Số
+                                        điện
+                                        thoại</label>
+                                </div>
+
+                                <div class="md-form mb-4">
+                                    <i class="fa fa-lock prefix text-danger"></i>
+                                    <input type="password" id="password" class="form-control validate">
+                                    <label data-error="" data-success="" for="password">Mật khẩu</label>
+                                </div>
+                                <div class="text-center mt-2">
+                                    <button id="loginBtn" data-dismiss="modal" class="btn btn-deep-orange">Đăng nhập<i
+                                            class="fa fa-sign-in ml-1"></i></button>
+                                </div>
+                            </div>
+                            <div class="modal-footer d-flex justify-content-center">
+                                <div class="options text-center text-md-right mt-1">
+                                    <a href="#" class="blue-text">Quên mật khẩu?</a>
+                                </div>
+                                <button type="button" id="gotoSignup" class="btn btn-indigo waves-effect ml-auto"
+                                    data-dismiss="modal" data-toggle="modal" data-target="#modalRegisterForm">Đăng ký</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header text-center">
+                                <h4 class="modal-title w-100 font-weight-bold light-blue-text">Đăng ký</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body mx-3">
+                                <div class="md-form mb-5">
+                                    <i class="fa fa-user prefix text-info"></i>
+                                    <input type="text" id="orangeForm-name" class="form-control validate">
+                                    <label data-error="Ký tự không hợp lệ" data-success="" for="orangeForm-name">Tên</label>
+                                </div>
+                                <div class="md-form mb-5">
+                                    <i class="fa fa-phone prefix text-default"></i>
+                                    <input type="number" id="userNameSignup" class="form-control validate">
+                                    <label data-error="Số điện thoại không hợp lệ" data-success="" for="userNameSignup">Số
+                                        điện thoại</label>
+                                </div>
+                                <div class="md-form mb-4">
+                                    <i class="fa fa-lock prefix text-danger"></i>
+                                    <input type="password" id="passwordSignup" class="form-control validate">
+                                    <label data-error="" data-success="" for="passwordSignup">Mật khẩu</label>
+                                </div>
+
+                                <div class="md-form mb-4">
+                                    <i class="fa fa-lock prefix yellow-text"></i>
+                                    <input type="password" id="confirmPasswordSignup" class="form-control validate">
+                                    <label data-error="" data-success="" for="confirmPasswordSignup">Xác nhận mật khẩu</label>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer d-flex justify-content-center">
+                                <button class="btn btn-indigo" data-dismiss="modal">Đăng ký</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center" id="notLoginBtn">
+                    <a href="" class="btn btn-deep-orange btn-rounded mb-2" data-toggle="modal" data-target="#modalLoginForm">Đăng
+                        nhập <i class="fa fa-sign-in ml-1"></i>
+                    </a>
+                </div>
+            </li>
+        </ul>
+        <form class="form-inline">
+            <div class="md-form my-0">
+                <input class="form-control mr-sm-2 " type="text" placeholder="Tìm kiếm" aria-label="Search">
+            </div>
+            <a class="nav-link waves-effect waves-light text-secondary">
+                <i class="fa fa-search text-white" aria-hidden="true"></i>
+            </a>
+        </form>
+    </div>
+</nav>
 <% include alertCollection %>

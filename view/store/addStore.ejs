@@ -1,0 +1,116 @@
+<div class="modal fade" id="editProfile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <!--Modal: Contact form-->
+    <div class="modal-dialog cascading-modal" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header success-color white-text">
+                <h4 class="title">
+                    <i class="fa fa-pencil"></i> Thông tin cá nhân</h4>
+                <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+                <!-- Material input name -->
+                <div class="md-form form-sm">
+                    <i class="fa fa-envelope prefix"></i>
+                    <input type="text" id="fullNameUser" class="form-control form-control-sm">
+                    <label for="materialFormNameModalEx1">Họ và tên</label>
+                </div>
+                <!-- Material input email -->
+                <div class="md-form form-sm">
+                    <i class="fa fa-phone prefix"></i>
+                    <input type="password" id="phoneNumberUser" class="form-control form-control-sm">
+                    <label for="materialFormEmailModalEx1">Số điện thoại</label>
+                </div>
+                <div class="md-form form-sm">
+                    <i class="fa fa-envelope-o prefix"></i>
+                    <input type="password" id="emailUser" class="form-control form-control-sm">
+                    <label for="materialFormEmailModalEx1">Email</label>
+                </div>
+                <!-- Material input subject -->
+                <div class="md-form form-sm">
+                    <i class="fa fa-road prefix"></i>
+                    <input type="text" id="addr" class="form-control form-control-sm">
+                    <label for="materialFormSubjectModalEx1">Địa chỉ</label>
+                </div>
+                <!-- Material textarea message -->
+                <div class="text-center mt-4 mb-2">
+                    <button class="btn btn-primary" id="editProfileUser">Gửi 
+                        <i class="fa fa-send ml-2"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+    <!--/Modal: Contact form-->
+</div>
+
+
+<div class="modal fade" id="editStore" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <!--Modal: Contact form-->
+    <div class="modal-dialog cascading-modal" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header default-color white-text">
+                <h4 class="title">
+                    <i class="fa fa-pencil"></i> Thông tin cửa hàng</h4>
+                <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+                <!-- Material input name -->
+                <div class="md-form form-sm">
+                    <i class="fa fa-envelope prefix"></i>
+                    <input type="text" id="fullNameStore" class="form-control form-control-sm">
+                    <label for="materialFormNameModalEx1">Tên cửa hàng</label>
+                </div>
+                <!-- Material input email -->
+                <div class="md-form form-sm">
+                    <i class="fa fa-phone prefix"></i>
+                    <input type="password" id="phoneNumberStore" class="form-control form-control-sm">
+                    <label for="materialFormEmailModalEx1">Số điện thoại</label>
+                </div>
+                <!-- Material input subject -->
+                <div class="md-form form-sm">
+                    <i class="fa fa-road prefix"></i>
+                    <input type="text" id="addrStore" class="form-control form-control-sm">
+                    <label for="materialFormSubjectModalEx1">Địa chỉ</label>
+                </div>
+                <!-- Material textarea message -->
+                <div class="md-form form-sm">
+                    <i class="fa fa-pencil prefix"></i>
+                    <textarea type="text" id="materialFormMessageModalEx1" class="md-textarea form-control"></textarea>
+                    <label for="materialFormMessageModalEx1">Miêu tả</label>
+                </div>
+
+                <div class="text-center mt-4 mb-2">
+                    <button class="btn btn-primary" id="addStore">Gửi
+                        <i class="fa fa-send ml-2"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+    <!--/Modal: Contact form-->
+</div>
+<div class="row">
+    <div class="text-center col">
+        <a href="" class="btn btn-success btn-rounded mb-2" data-toggle="modal" data-target="#editProfile">Cập nhật
+            thông tin cá nhân</a>
+    </div>
+    <div class="text-center col">
+        <a href="" class="btn btn-default btn-rounded mb-2" data-toggle="modal" data-target="#editStore">Cập nhật thông
+            tin cửa hàng</a>
+    </div>
+
+</div>

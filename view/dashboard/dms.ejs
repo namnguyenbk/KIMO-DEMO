@@ -14,6 +14,24 @@
 
 </head>
 <style>
+    .btn-circle {
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
     footer{
         background: #0cebeb;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb);  /* Chrome 10-25, Safari 5.1-6 */
@@ -23,78 +41,20 @@
 </style>
 
 <body class="grey lighten-3">
-    <!--Main Navigation-->
     <header>
-        <!-- Navbar -->
-        <nav class="navbar  navbar-expand-lg navbar-light scrolling-navbar " style="background: #7F7FD5;  /* fallback for old browsers */
-        background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        ">
-            <div class="container-fluid">
-                <!-- Brand -->
-                <a class="navbar-brand waves-effect" href="/">
-                    <strong class="blue-text">KIMO</strong>
-                </a>
-                <!-- Collapse -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <!-- Links -->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left -->
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link waves-effect" href="#">Trang chủ
-                                <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect" href="" target="_blank">Tin tức</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect" href="" target="_blank">Giới thiệu
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect" href="" target="_blank">Liên hệ
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto nav-flex-icons navbar-right" id="userBox" style="cursor: pointer;">
-                        <li class="nav-item avatar dropdown">
-                            <a class="nav-link dropdown-toggle user" id="navbarDropdownMenuLink-5" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle z-depth-0 "
-                                    alt="avatar image" style="width:40px;">
-                                <span id="userNameBox"></span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
-                                <a class="dropdown-item" href="#" id="logoutBtn"> <span style="color: black; " class="fa fa-sign-out-alt"
-                                        aria-hidden="true"></span>Đăng xuất</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Navbar -->
+        <% include ../template/header %>
 
         <!-- Sidebar -->
         <div class="sidebar-fixed position-fixed">
-
-            <a class="logo-wrapper waves-effect">
-                <img src="https://mdbootstrap.com/img/logo/mdb-email.png" class="img-fluid" alt="">
-            </a>
             <div class="list-group list-group-flush">
-                <a href="#" class="list-group-item active waves-effect">
+                <a href="#dashboard" class="list-group-item active list-group-item-action waves-effect mt-5" id="main">
                     <i class="fa fa-pie-chart mr-3"></i>Thống kê bán hàng
                 </a>
-                <a href="#" class="list-group-item list-group-item-action waves-effect">
+                <a href="#product" class="list-group-item list-group-item-action waves-effect" id="product">
                     <i class="fa fa-dashboard mr-3"></i>Quản lí bán hàng</a>
-                <a href="#" class="list-group-item list-group-item-action waves-effect">
+                <a href="#profile" class="list-group-item list-group-item-action waves-effect" id="profile">
                     <i class="fa fa-user mr-3"></i>Thông tin cá nhân</a>
-                <a href="#" class="list-group-item list-group-item-action waves-effect">
+                <a href="#" class="list-group-item list-group-item-action waves-effect" id="message">
                     <i class="fa fa-table mr-3"></i>Tin nhắn
                     <span class="badge badge-primary badge-pill pull-right">4</span>
                 </a>
@@ -104,22 +64,22 @@
                 </a>
                 <a href="#" class="list-group-item list-group-item-action waves-effect">
                     <i class="fa fa-gears mr-3"></i>Cài đặt</a>
-                <a href="#" class="list-group-item list-group-item-action waves-effect">
+                <a href="#" class="list-group-item list-group-item-action waves-effect" id="logoutBtn2">
                     <i class="fa fa-sign-out mr-3"></i>Đăng xuất</a>
             </div>
-        </div>
-        <!-- Sidebar -->
-    </header>
-    <!--Main Navigation-->
-    <!--Main layout-->
+        </div>   
     <div id="main">
-        <div class="d-none">
+        <div class="sideMenu" id="mainView">
             <% include main %>
         </div>
+        <div class="sideMenu" id="productView">
+            <% include ../product/listProductDB %>
+        </div>
+        <div class="sideMenu" id="profileView">
+            <% include ../user/profile %>
+        </div>
 
-        <% include ../product/listproduct %>
     </div>
-
 
 
     <!--Main layout-->
@@ -153,154 +113,45 @@
                 <i class="fa fa-codepen mr-3"></i>
             </a>
         </div>
-        <div class="footer-copyright py-3">
+        <div class="footer-copyright ">
             © 2018 Bản quyền:
             <a href="https://kimowebapp.herokuapp.com" target="_blank"> CodeMonster.com </a>
         </div>
     </footer>
+    
+    <% include ../template/alertCollection.ejs %>
     <script type="text/javascript" src="style/dashboard/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="style/dashboard/js/popper.min.js"></script>
     <script type="text/javascript" src="style/dashboard/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="style/dashboard/js/mdb.min.js"></script>
     <script type="text/javascript" src="style/dashboard/js/addons/datatables.min.js"></script>
-
-    <script type="text/javascript">
-        new WOW().init();
-        $(document).ready(function () {
-            if (typeof (Storage) !== "undefined") {
-                let userName = localStorage.getItem("userName");
-                if (userName !== "") {
-                    updateUserBox(userName, '', 'logged');
-                }
-            } else {
-            }
-        });
-        var updateUserBox = (fullname, avatar, status) => {
-            if (status == "logged") {
-                $('#notLoginBtn').hide();
-                $('#userBox').show('fast', () => {
-                    $('#userNameBox').html(fullname);
-                });
-            } else {
-                $('#notLoginBtn').show();
-                $('#userBox').hide();
-            }
-
-        }
-
-        function readURL(input, id) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#' + id).attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-        $("#inputFile01").change(function () {
-            readURL(this, 'image1');
-        });
-        $("#inputFile02").change(function () {
-            readURL(this, 'image2');
-        });
-        $("#inputFile03").change(function () {
-            readURL(this, 'image3');
-        });
-        $("#inputFile04").change(function () {
-            readURL(this, 'image4');
-        });
-    </script>
-    <script>
-        var ctx = document.getElementById("myChart").getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ["Áo thun", "Áo sơ mi", "Áo khoác", "Áo dài tay", "Giày,dép", "Đồ lót, đồ bơi", 'Mũ nón', 'Quần bò', 'Quần short', 'Quần vải', 'Veston', 'Váy', 'Phụ kiện'],
-                datasets: [{
-                    label: '# số lượng ',
-                    data: [12, 19, 3, 5, 2, 3, 24, 12, 3, 5, 6, 7, 8, 9],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)',
-                        'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-        var ctxP = document.getElementById("pieChart").getContext('2d');
-        var myPieChart = new Chart(ctxP, {
-            type: 'pie',
-            data: {
-                datasets: [{
-                    data: [300, 50, 100, 40, 120],
-                    backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
-                    hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
-                }]
-            },
-            options: {
-                responsive: true
-            }
-        });
-    </script>
-
+    <script type="text/javascript" src="script/bootstrap-notify.min.js"></script>
+    <script src="script/dmsScript.js" type="text/javascript"></script>
+    <script src="script/productScript.js" type="text/javascript"></script>
+    <script src="script/templateScript.js" type="text/javascript"></script>
+    
     <!--Google Maps-->
-    <script src="https://maps.google.com/maps/api/js"></script>
+    <script src="https://maps.google.com/maps/api/js"></script>      
     <script>
-        // Regular map
-        function regular_map() {
-            var var_location = new google.maps.LatLng(40.725118, -73.997699);
-
-            var var_mapoptions = {
-                center: var_location,
-                zoom: 14
-            };
-
-            var var_map = new google.maps.Map(document.getElementById("map-container"),
-                var_mapoptions);
-
-            var var_marker = new google.maps.Marker({
-                position: var_location,
-                map: var_map,
-                title: "New York"
-            });
-        }
-        // Initialize maps
-        google.maps.event.addDomListener(window, 'load', regular_map);
+            // $(document).ready(function() {
+            //     $('#listProductDB').DataTable( {
+            //         "processing": true,
+            //         "serverSide": true,
+            //         "ajax": {
+            //         "url": "api/getListProducts",
+            //         "type": "POST"
+            //         },
+            //         "columns": [
+            //             { "data": "product_name" },
+            //             { "data": "category_id" },
+            //             { "data": "price" },
+            //             { "data": "rate" },
+            //             { "data": "status" },
+            //         ]
+            //     } );
+            // } );
+    
     </script>
-
 </body>
 
 </html>

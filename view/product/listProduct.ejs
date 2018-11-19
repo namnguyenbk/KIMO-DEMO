@@ -1,53 +1,39 @@
 <style>
-    html{
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    }
-    #sorter{
-        background: #aa4b6b;  /* fallback for old browsers */
-        background: -webkit-linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    }
 </style>
+<link href="style/dashboard/css/bootstrap.min.css" rel="stylesheet">
+<link href="style/dashboard/css/mdb.min.css" rel="stylesheet">
+<script>
+
+</script>
 <main>
     <div class="container">
-        <!--Navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark mdb-color mt-3 mb-5" id="sorter" >
-            <!-- Navbar brand -->
-            <!-- <span class=" navbar-left">Danh sách sản phẩm nổi bật</span> -->
-            <!-- Collapse button -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-                aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="basicExampleNav" style="font-size: 13px;">
-                <span class="navbar-brand" style="font-size: 13px;">Sắp xếp:</span>
-                <!-- Links -->
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Mặc định
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Giá tăng dần</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Giá giảm dần</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Mới</a>
-                    </li>
-                </ul>
-                <form class="form-inline">
-                    <div class="md-form my-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                    </div>
-                </form>
-            </div>
+    
+        <nav class="navbar mt-3 mb-5 justify-content-center pink lighten-5 " id="sorter">
+            <ul class="nav nav-pills nav-fill " style="font-size: 13px;">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">
+                        <i class="fa fa-asterisk" aria-hidden="true"></i>Mới đăng</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
+                        Giá tăng</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-sort-amount-desc" aria-hidden="true"></i>
+                        Giá giảm</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#">Mặc định</a>
+                </li>
+            </ul>
         </nav>
         <!--/.Navbar-->
-        <section class="text-center mb-4">
+        <section class="text-center mb-4" id="containerProduct">
+            <% for(let i = 0; i < 3; i++) { %>
             <div class="row wow fadeIn">
+                <% for(let j = 0; j < 4; j++) { %>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="card card-cascade card-ecommerce wider">
                         <div class="view view-cascade overlay">
@@ -58,37 +44,42 @@
                             </a>
                         </div>
                         <div class="card-body card-body-cascade text-center ">
-                            <!--Category & Title-->
-                            <h5>Category</h5>
-                            <h4 class="card-title">Product name</h4>
+                            <h5>
+                                <%= "Test" %>
+                            </h5>
+                            <h4 class="card-title">
+                                <%= "Test" %>
+                            </h4>
                             <ul class="row">
-                                    <i class="fa fa-star " style="color: rgba(177, 167, 30, 0.637);"></i>
-                                    <i class="fa fa-star " style="color: rgba(177, 167, 30, 0.637);" ></i>
-                                    <i class="fa fa-star " style="color: rgba(177, 167, 30, 0.637);"></i>
-                                    <i class="fa fa-star " style="color: rgba(177, 167, 30, 0.637);"></i>
-                                    <i class="fa fa-star-o" style="color: rgba(177, 167, 30, 0.637);"></i>
-                                </ul>                        
-                            <!--Description-->
+                                <i class="fa fa-star " style="color: rgba(177, 167, 30, 0.637);"></i>
+                                <i class="fa fa-star " style="color: rgba(177, 167, 30, 0.637);"></i>
+                                <i class="fa fa-star " style="color: rgba(177, 167, 30, 0.637);"></i>
+                                <i class="fa fa-star " style="color: rgba(177, 167, 30, 0.637);"></i>
+                                <i class="fa fa-star-o" style="color: rgba(177, 167, 30, 0.637);"></i>
+                            </ul>
                             <p class="card-text">Description
                             </p>
-                            <a class="btn-floating btn-lg purple-gradient" style="margin-right: 20px;box-shadow: 2px 2px 3px #999; border-radius:50px; font-size: 15px;">
+                            <a class="btn-floating btn-lg btn-cyan" style="margin-right: 20px; border-radius:50px; font-size: 15px;">
                                 <i class="fa fa-bolt"></i>Xem
                             </a>
-                            <a class="btn-floating btn-lg peach-gradient" style="box-shadow: 2px 2px 3px #999; border-radius:50px; font-size: 15px;">
+                            <a class="btn-floating btn-lg btn-deep-orange" style=" border-radius:50px; font-size: 15px;">
                                 <i class="fa fa-shopping-cart"></i>Mua
                             </a>
-                            <!--Card footer-->
                             <div class="card-footer">
-                                <span class="float-left">Giá$</span>
+                                <span class="float-left">VND</span>
                                 <span class="float-right">
-                                    <a class="" data-toggle="tooltip" data-placement="top" title="Xem nhanh"><i class="fa fa-eye mr-3" style="color: blue;"></i></a>
-                                    <a class="" data-toggle="tooltip" data-placement="top" title="Thêm vào danh sách yêu thích"><i class="fa fa-heart-o" style="color: red;"></i></a>
+                                    <a class="" data-toggle="tooltip" data-placement="top" title="Xem nhanh"><i class="fa fa-eye mr-3"
+                                            style="color: blue;"></i></a>
+                                    <a class="" data-toggle="tooltip" data-placement="top" title="Thêm vào danh sách yêu thích"><i
+                                            class="fa fa-heart-o" style="color: red;"></i></a>
                                 </span>
                             </div>
                         </div>
                     </div>
                 </div>
+                <% } %>
             </div>
+            <% } %>
         </section>
         <!--Pagination-->
         <nav class="d-flex justify-content-center wow fadeIn">
