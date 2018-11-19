@@ -73,7 +73,7 @@ module.exports = function productController() {
           });
         }
         
-        const phonenumber = req.body.phonenumber;
+        const phonenumber = req.userData.phonenumber;
         console.log(phonenumber);
         const stores = await Store.find().where('phoneNumber').equals(phonenumber);
         if (stores.length < 1) {
@@ -91,6 +91,7 @@ module.exports = function productController() {
         const statusID_ = req.body.statusID;
         const des_ = req.body.des;
         const listImgUrl_ = req.body.listImgUrl? req.body.listImgUrl : [];
+        const ship_From_ = req.body.ship_From? req.body.ship_From : [];
         const newProduct = new Product({
           fromStoreID: fromStoreID_,
           productName: productName_,
@@ -104,6 +105,7 @@ module.exports = function productController() {
           details: {
             images: listImgUrl_,
             des: des_,
+            ship_From: ship_From_,
           },
         });
 
