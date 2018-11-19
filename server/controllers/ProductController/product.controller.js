@@ -90,6 +90,7 @@ module.exports = function productController() {
         const discount_ = req.body.discount;
         const statusID_ = req.body.statusID;
         const des_ = req.body.des;
+        const listImgUrl_ = req.body.listImgUrl? req.body.listImgUrl : [];
         const newProduct = new Product({
           fromStoreID: fromStoreID_,
           productName: productName_,
@@ -101,6 +102,7 @@ module.exports = function productController() {
           discount: discount_,
           statusID: statusID_,
           details: {
+            images: listImgUrl_,
             des: des_,
           },
         });
