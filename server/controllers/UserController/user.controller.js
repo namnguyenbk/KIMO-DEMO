@@ -4,12 +4,11 @@ const { User } = require('../../models/person');
 
 module.exports = function userController() {
   const signUp = (req, res) => {
-    if (req.userData) res.redirect('/'); // can thao luan lai viec dieu huong
     (async function addUser() {  // IIFE
       try {
         const user = await User.find({ username: req.body.phonenumber });
         if (user.length >= 1) {
-          return res.status(201).json({
+          return res.status(409).json({
             code: '9996',
             message: 'User existed',
           });
@@ -22,17 +21,18 @@ module.exports = function userController() {
         const result = await newUser.save();
         const token = jwt.sign({
           // them 1 so truong khi deploy
-          phonenumber: req.body.phonenumber,
+          phonenumber: result.username ,
+          id: result.id,
         },
-        process.env.JWT_KEY,
+          process.env.JWT_KEY,
           {
             expiresIn: '1h',
           });
         return res.status(201).json({
           code: '1000',
           message: 'OK',
-          token,
           result,
+         token,
         });
       } catch (err) {
         return res.status(500).json({
@@ -45,15 +45,15 @@ module.exports = function userController() {
   };
 
   const signIn = (req, res) => {
-    console.log(req.userData);
-    if (req.userData) res.redirect('/');
+    if (req.userData) return res.redirect('/');
     (async function authUser() {
       try {
         const user = await User.find({ username: req.body.phonenumber });
         if (user.length < 1) {
-          return res.status(201).json({
+          return res.status(401).json({
             code: '9995',
             message: 'User is not validated',
+            user,
           });
         }
         const result = await bcrypt.compare(req.body.password, user[0].password);
@@ -61,6 +61,7 @@ module.exports = function userController() {
           const token = jwt.sign({
             // them 1 so truong khi deploy
             phonenumber: user[0].username,
+            id: user[0].id,
           },
           process.env.JWT_KEY,
             {
@@ -71,7 +72,12 @@ module.exports = function userController() {
             message: 'OK',
             token, // save vao local storage va dung ajax de set header = authorization : bearer token
           });
-        } throw new Error();
+        } else {
+          return res.status(401).json({
+            code: '9995',
+            message: 'User is not validated',
+          });
+        };
       } catch (err) {
         return res.status(500).json({
           code: '1001',
@@ -81,6 +87,10 @@ module.exports = function userController() {
       }
     }()); // end here.
   };
+
+  const signOut = (req, res) => {
+    if (req.userData) res.redirect('/');
+  }
 
   const userDelete = (req, res) => {
     User.remove({ _id: req.params.userId })
@@ -100,6 +110,7 @@ module.exports = function userController() {
   return {
     signUp,
     signIn,
+    signOut,
     userDelete,
   };
 };
