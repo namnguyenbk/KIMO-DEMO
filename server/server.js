@@ -3,7 +3,7 @@ import compression from 'compression';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import path from 'path';
-
+const auth = require('./middleware/check-auth');
 // Initialize the Express App
 const app = new Express();
 
@@ -14,6 +14,7 @@ const isProdMode = process.env.NODE_ENV === 'production' || false;
 app.set('view engine', 'ejs');
 import posts from './routes/post.routes';
 const users = require('./routes/user.routes');
+const product = require('./routes/product.routes');
 import serverConfig from './config';
 
 // Set native promises as mongoose promise
@@ -31,7 +32,7 @@ if (process.env.NODE_ENV !== 'test') {
     }
   });
 }
-
+app.use(auth);
 // Apply body Parser and server public assets and routes
 app.use(compression());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -49,6 +50,7 @@ app.use((req, res, next) => {
 });
 app.use('/api', posts);
 app.use('/users', users);
+app.use('/products',product);
 app.use('/public', Express.static(path.join(__dirname, "/public")));
 app.use('/script', Express.static(path.join(__dirname, "../view/script")));
 app.use('/style', Express.static(path.join(__dirname, "../view/style")));
