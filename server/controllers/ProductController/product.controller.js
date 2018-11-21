@@ -45,8 +45,8 @@ module.exports = function productController() {
     (async function findProduct() {
       let productDetail;
       try {
-        if (req.body.productId) {
-          productDetail = await Product.findById(req.body.productId);
+        if (req.body.id) {
+          productDetail = await Product.findById(req.body.id);
           return res.status(200).json(productDetail);
         }
         return res.status(404).json({
@@ -73,31 +73,31 @@ module.exports = function productController() {
           });
         }
         
-        const phonenumber = req.userData.phonenumber;
-        console.log(phonenumber);
-        const stores = await Store.find().where('phoneNumber').equals(phonenumber);
-        if (stores.length < 1) {
-          return res.status(401).json({
-            code: 9995,
-            message: 'no store found',
-          });
-        }
-        const fromStoreID_ = stores[0]._id;
-        const productName_ = req.body.productName;
+        const phonenumber_ = req.userData.phonenumber;
+        // console.log(phonenumber);
+        // const stores = await Store.find().where('phoneNumber').equals(phonenumber);
+        // if (stores.length < 1) {
+        //   return res.status(401).json({
+        //     code: 9995,
+        //     message: 'no store found',
+        //   });
+        // }
+        // const fromStoreID_ = stores[0]._id;
+        const productName_ = req.body.name;
         const categoryid_ = req.body.category_id;
-        const cost_ = req.body.cost;
+        const cost_ = req.body.price;
         const brand_ = req.body.brand;
         const discount_ = req.body.discount;
         const statusID_ = req.body.statusID;
         const des_ = req.body.des;
         const listImgUrl_ = req.body.listImgUrl? req.body.listImgUrl : [];
-        const ship_From_ = req.body.ship_From? req.body.ship_From : [];
         const newProduct = new Product({
-          fromStoreID: fromStoreID_,
+          //fromStoreID: fromStoreID_,
           productName: productName_,
           productType: {
             categoryID: categoryid_,
           },
+          phoneNumber: phonenumber_,
           cost: cost_,
           brand: brand_,
           discount: discount_,
@@ -105,7 +105,6 @@ module.exports = function productController() {
           details: {
             images: listImgUrl_,
             des: des_,
-            ship_From: ship_From_,
           },
         });
 
@@ -132,56 +131,56 @@ module.exports = function productController() {
     }());
   };
 
-  const addStore = (req, res) => {
-    (async function findProduct() {
-      try {
-        if (!req.userData) {
-          console.log(req.userData);
-          return res.status(401).json({
-            code: 9995,
-            message: 'user is not valid sign in or sign up to continue',
-          });
-        }
-        const userPhoneNumber = req.body.phonenumber;
-        console.log(req.body);
-        const user = await User.find({ username: userPhoneNumber });
-        if (user.length < 1) {
-          return res.status(401).json({
-            code: '9995',
-            message: 'User is not validated',
-          });
-        }
-        const newStore = new Store({
-          ownerID: user[0]._id,
-          phoneNumber: userPhoneNumber,
-          email: req.body.email,
-          address: req.body.address,
-          des: req.body.des,
-        });
+  // const addStore = (req, res) => {
+  //   (async function findProduct() {
+  //     try {
+  //       if (!req.userData) {
+  //         console.log(req.userData);
+  //         return res.status(401).json({
+  //           code: 9995,
+  //           message: 'user is not valid sign in or sign up to continue',
+  //         });
+  //       }
+  //       const userPhoneNumber = req.body.phonenumber;
+  //       console.log(req.body);
+  //       const user = await User.find({ username: userPhoneNumber });
+  //       if (user.length < 1) {
+  //         return res.status(401).json({
+  //           code: '9995',
+  //           message: 'User is not validated',
+  //         });
+  //       }
+  //       const newStore = new Store({
+  //         ownerID: user[0]._id,
+  //         phoneNumber: userPhoneNumber,
+  //         email: req.body.email,
+  //         address: req.body.address,
+  //         des: req.body.des,
+  //       });
 
-        newStore.save((err, store) => {
-          if (err) {
-            return res.status(500).json({
-              code: 9999,
-              message: 'can not save to database',
-            });
-          }
+  //       newStore.save((err, store) => {
+  //         if (err) {
+  //           return res.status(500).json({
+  //             code: 9999,
+  //             message: 'can not save to database',
+  //           });
+  //         }
 
-          return res.status(200).json({
-            code: 1000,
-            message: 'add product successfully',
-            store,
-          });
-        });
-      } catch (error) {
-        return res.status(500).json({
-          code: '1001',
-          message: 'Can not connect to DB',
-          error,
-        });
-      }
-    }());
-  };
+  //         return res.status(200).json({
+  //           code: 1000,
+  //           message: 'add product successfully',
+  //           store,
+  //         });
+  //       });
+  //     } catch (error) {
+  //       return res.status(500).json({
+  //         code: '1001',
+  //         message: 'Can not connect to DB',
+  //         error,
+  //       });
+  //     }
+  //   }());
+  // };
 
 
   const addCateg = (req, res) => {
@@ -251,24 +250,24 @@ module.exports = function productController() {
         }
 
         const productId = req.body.productId;
-        const phoneNumber = req.userData.phonenumber;
-        const users = await User.find({ username: phoneNumber });
-        if (users.length < 1) {
-          return res.status(401).json({
-            code: '9995',
-            message: 'User is not validated',
-          });
-        }
-        const stores = await Store.find({ownerID: users[0]._id});
-        if (stores.length < 1) {
-          return res.status(401).json({
-            code: '9995',
-            message: 'No store found! create new store!',
-          });
-        }
+        const phoneNumber_ = req.userData.phonenumber;
+        // const users = await User.find({ username: phoneNumber });
+        // if (users.length < 1) {
+        //   return res.status(401).json({
+        //     code: '9995',
+        //     message: 'User is not validated',
+        //   });
+        // }
+        // const stores = await Store.find({ownerID: users[0]._id});
+        // if (stores.length < 1) {
+        //   return res.status(401).json({
+        //     code: '9995',
+        //     message: 'No store found! create new store!',
+        //   });
+        // }
         const products = await Product.find({
-          _id: productId,
-          fromStoreID: stores[0]._id,
+          phoneNumber: phoneNumber_,
+          id_: productId,
         });
 
         if(products.length < 1){
@@ -338,26 +337,26 @@ module.exports = function productController() {
           });
         }
 
-        const productId = req.body.productId;
+        const productId = req.body.id;
         const phoneNumber = req.userData.phonenumber;
-        const users = await User.find({ username: phoneNumber });
-        if (users.length < 1) {
-          return res.status(401).json({
-            code: '9995',
-            message: 'User is not validated',
-          });
-        }
-        const stores = await Store.find({ownerID: users[0]._id});
-        if (stores.length < 1) {
-          return res.status(401).json({
-            code: '9995',
-            message: 'No store found! create new store!',
-          });
-        }
-        // const products = await Product.find({
-        //   _id: productId,
-        //   fromStoreID: stores[0]._id,
-        // });
+        // const users = await User.find({ username: phoneNumber });
+        // if (users.length < 1) {
+        //   return res.status(401).json({
+        //     code: '9995',
+        //     message: 'User is not validated',
+        //   });
+        // }
+        // const stores = await Store.find({ownerID: users[0]._id});
+        // if (stores.length < 1) {
+        //   return res.status(401).json({
+        //     code: '9995',
+        //     message: 'No store found! create new store!',
+        //   });
+        // }
+        const products = await Product.find({
+          _id: productId,
+          phoneNumber: phoneNumber,
+        });
 
         // if(products.length < 1){
         //   return res.status(401).json({
@@ -399,7 +398,7 @@ module.exports = function productController() {
     getListProducts,
     getProductDetail,
     addProduct,
-    addStore,
+    //addStore,
     addCateg,
     getCategories,
     editProduct,

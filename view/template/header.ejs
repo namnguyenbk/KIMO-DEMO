@@ -358,11 +358,11 @@ background: linear-gradient(to right, #061161, #780206) !important; /* W3C, IE 1
                                 </button>
                             </div>
                             <div class="modal-body mx-3">
-                                <div class="md-form mb-5">
+                                <!-- <div class="md-form mb-5">
                                     <i class="fa fa-user prefix text-info"></i>
                                     <input type="text" id="orangeForm-name" class="form-control validate">
                                     <label data-error="Ký tự không hợp lệ" data-success="" for="orangeForm-name">Tên</label>
-                                </div>
+                                </div> -->
                                 <div class="md-form mb-5">
                                     <i class="fa fa-phone prefix text-default"></i>
                                     <input type="number" id="userNameSignup" class="form-control validate">
@@ -383,7 +383,7 @@ background: linear-gradient(to right, #061161, #780206) !important; /* W3C, IE 1
 
                             </div>
                             <div class="modal-footer d-flex justify-content-center">
-                                <button class="btn btn-indigo" data-dismiss="modal">Đăng ký</button>
+                                <button class="btn btn-indigo" data-dismiss="modal" id="signupBtn">Đăng ký</button>
                             </div>
                         </div>
                     </div>
@@ -404,6 +404,75 @@ background: linear-gradient(to right, #061161, #780206) !important; /* W3C, IE 1
                 <i class="fa fa-search text-white" aria-hidden="true"></i>
             </a>
         </form>
+        <div class="modal fade" id="editProfile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <!--Modal: Contact form-->
+            <div class="modal-dialog cascading-modal" role="document">
+                <!--Content-->
+                <div class="modal-content">
+                    <!--Header-->
+                    <div class="modal-header success-color white-text">
+                        <h4 class="title">
+                            <i class="fa fa-pencil"></i> Thông tin cá nhân</h4>
+                        <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <!--Body-->
+                    <div class="modal-body">
+                        <div class="col input-group mb-2 md-form">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="">Ảnh đại diện</span>
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="inputFile01" aria-describedby="inputFile01">
+                                <label class="custom-file-label" for="">Chọn</label>
+                            </div>
+                            
+                        </div>
+                        <div class="md-form form-sm">
+                            <img id="avatarThumb"  style="width: 50%; height: 50%;" src="#" />
+                        </div>
+                        <div class="md-form form-sm">
+                            <i class="fa fa-envelope prefix"></i>
+                            <input type="text" id="firstName" class="form-control form-control-sm">
+                            <label for="materialFormNameModalEx1">Họ và tên đệm</label>
+                        </div>
+                        <div class="md-form form-sm">
+                            <i class="fa fa-envelope prefix"></i>
+                            <input type="text" id="lastName" class="form-control form-control-sm">
+                            <label for="materialFormNameModalEx1">Tên</label>
+                        </div>
+                        <!-- Material input email -->
+                        <div class="md-form form-sm">
+                            <i class="fa fa-phone prefix"></i>
+                            <input type="password" id="phoneNumberUser" class="form-control form-control-sm">
+                            <label for="materialFormEmailModalEx1">Số điện thoại</label>
+                        </div>
+                        <div class="md-form form-sm">
+                            <i class="fa fa-envelope-o prefix"></i>
+                            <input type="password" id="emailUser" class="form-control form-control-sm">
+                            <label for="materialFormEmailModalEx1">Email</label>
+                        </div>
+                        <!-- Material input subject -->
+                        <div class="md-form form-sm">
+                            <i class="fa fa-road prefix"></i>
+                            <input type="text" id="addr" class="form-control form-control-sm">
+                            <label for="materialFormSubjectModalEx1">Địa chỉ</label>
+                        </div>
+                        <!-- Material textarea message -->
+                        <div class="text-center mt-4 mb-2">
+                            <button class="btn btn-primary" id="editProfileUser">Gửi 
+                                <i class="fa fa-send ml-2"></i>
+                            </button>
+                        </div>
+        
+                    </div>
+                </div>
+                <!--/.Content-->
+            </div>
+            <!--/Modal: Contact form-->
+        </div>
+        
     </div>
 </nav>
 <% include alertCollection %>

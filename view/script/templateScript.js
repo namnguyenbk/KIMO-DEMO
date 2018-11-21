@@ -7,39 +7,54 @@ $(document).ready(function () {
     } else {
     }
 });
-$("#display").on("click", function (event) {
-    $("#sidebar").hide();
-});
-$("#hide").on("click", function (event) {
-    $("#sidebar").show();
-});
+$('#avatarThumb').hide();
 $("#loginBtn").click(function () {
     var phonenumber = $("#userName").val();
     var password = $("#password").val();
-    login(phonenumber, password);
+    if( phonenumber != ''){
+        if(password != ''){
+            login(phonenumber, password);
+        }else{
+            showDangerNotify('Bạn chưa nhập mật khẩu!');
+        }
+    }else{
+        showDangerNotify('Bạn chư nhập số điện thoại!');
+    }
+    
 
 });
 $("#signupBtn").on('click', function (event) {
     var phonenumber = $("#userNameSignup").val();
     var password = $('#passwordSignup').val();
-    var fullName = $('#fullname').val();
+    var confirmPassword = $('#confirmPasswordSignup').val();
+    // var fullName = $('#fullname').val();
+    if( phonenumber == ''){
+        showDangerNotify('Bạn chưa nhập số điện thoại!');
+        return 0;
+    }
+    if(password == ''){
+        showDangerNotify('Bạn chưa nhập mật khẩu!');
+        return 0;
+    }
+    if(password !== confirmPassword){
+        showDangerNotify('Mật khẩu không khớp!');
+        return 0;
+    }
     var dataMap = {
         'phonenumber': phonenumber,
         'password': password,
     }
     $.ajax({
         url: '/users/signUp',
-        headers: {
-            'Authorization': '',
-        },
         method: 'POST',
         dataType: 'json',
         data: dataMap,
         success: function (data) {
-            console.log("Nam");
-
+            // console.log("Nam");
+            $('#eidtProfile').show();
             if (data['code'] == '1000') {
-                showSuccessNotify("Chúc mừng" + fullname + "đã trở thành thành viên của KIMO");
+                showSuccessNotify("Chúc mừng đã trở thành thành viên của KIMO");
+                $('#editProfile').modal('toggle');
                 login(phonenumber, password);
             }
             else {
@@ -56,6 +71,8 @@ $("#signupBtn").on('click', function (event) {
 });
 $('#logoutBtn').on('click', function () {
     localStorage.removeItem("userName");
+    localStorage.removeItem("userId");
+    localStorage.setItem('token');
     updateUserBox(null, null, "logout");
     window.location.href = "/";
 });
@@ -70,11 +87,24 @@ var login = (phonenumber, password) => {
         data: dataMap,
         success: function (data) {
             if (data['code'] == '1000') {
-                showSuccessNotify("Xin chào" + data['fullname']);
-                updateUserBox(data['fullname'], '', 'logged');
-                localStorage.setItem('userID', data['id']);
-                localStorage.setItem('token', data['token']);
-                localStorage.setItem("userName", "Nguyen Danh Nam");
+                var user_id = data['id'];
+                // $.ajax({
+                //     url: '/users/get_user_info',
+                //     method: 'POST',
+                //     data: {
+                //         user_id: user_id
+                //     },
+                //     success: (dataUserInfo) => {
+                //         var fullname = dataUserInfo['firstname'] + ' ' + dataUserInfo['lastname'];
+                //         showSuccessNotify("Xin chào" + fullname );
+                //         updateUserBox(fullname, '', 'logged');
+                //         localStorage.setItem('userID', data['id']);
+                //         localStorage.setItem('token', data['token']);
+                //         localStorage.setItem("userName", fullname);
+                //     }
+                // });
+                showSuccessNotify("Xin chào" + fullname );
+                        updateUserBox(fullname, '', 'logged');
             }
             if (data['code'] == '9995') {
                 showFailNotify('Tài khoản/ hoặc mật khẩu không chính xác!');
@@ -95,14 +125,14 @@ var updateUserBox = (fullname, avatar, status) => {
 
 }
 
-$.ajax({
-    url: 'https://thongtindoanhnghiep.co/api/city',
-    type: 'GET',
-    async: 'false',
-    success: function(data){
-        getListProduct(data);
-    }
-});
+// $.ajax({
+//     url: '',
+//     type: 'POST',
+//     async: 'false',
+//     success: function(data){
+//         // getListProduct(data);
+//     }
+// });
 
 var getListProduct = function (data) {
     var containerProduct = $('#containerProduct');
@@ -121,4 +151,22 @@ var getListProduct = function (data) {
         }
            
     }
+}
+
+
+function readURL(input, id) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#' + id).attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#inputFile01").change(function () {
+    $('#avatarThumb').show();
+    readURL(this, 'avatarThumb');
+});
+var updateProfile = function () {
+    
 }
