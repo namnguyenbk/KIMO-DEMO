@@ -61,6 +61,7 @@ $("#signupBtn").on('click', function (event) {
                 if (data['code'] == '9996') {
                     showFailNotify("Tài khoản đã tồn tại, vui lòng dùng số điện thoại khác để đăng ký");
                 } else {
+                    
                 }
             }
         },
@@ -154,19 +155,7 @@ var getListProduct = function (data) {
 }
 
 
-function readURL(input, id) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $('#' + id).attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-$("#inputFile01").change(function () {
-    $('#avatarThumb').show();
-    readURL(this, 'avatarThumb');
-});
+
 var updateProfile = function () {
     
 }

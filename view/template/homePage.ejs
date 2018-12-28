@@ -10,13 +10,28 @@
 </style>
 <!DOCTYPE html>
 <html lang="en">
-<link rel="shortcut icon" href="http://res.cloudinary.com/hashnode/image/upload/v1455629445/static_imgs/mern/mern-favicon-circle-fill.png"
+<link rel="shortcut icon" href="/public/avatar/image-1542946009428"
     type="image/png" />
-    <title>KIMO</title>
-    <% include header %>
+<title>KIMO</title>
+<% include header %>
+<div class="col input-group mb-2 md-form">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="">Ảnh đại diện</span>
+    </div>
+    <div class="custom-file">
+        <input type="file" class="custom-file-input" id="inputFile01" aria-describedby="inputFile01">
+        <label class="custom-file-label" for="">Chọn</label>
+    </div>
+</div>
+
+<button class="btn btn-success" id="uploadImage">Upload</button>
+<div class="md-form form-sm ml-3 mr-3 container">
+    <img id="avatarThumb" style="" src="#" />
+</div>
 <% include ../product/listProduct %>
 
 <% include footer %>
+
 </html>
 
 <!--/.container-->
@@ -32,3 +47,44 @@
 <script type="text/javascript" src="script/templateScript.js"></script>
 <script type="text/javascript" src="script/userScript.js"></script>
 <script type="text/javascript" src="script/bootstrap-notify.min.js"></script>
+<script>
+    function readURL(input, id) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#' + id).attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    var formData;
+    $("#inputFile01").change(function (event) {
+        $('#avatarThumb').show();
+        readURL(this, 'avatarThumb');
+        var file = event.target.files[0];
+        formData = new FormData();
+        formData.append('myFile',file);
+        console.log(formData);
+        
+        $('#uploadImage').on('click', (event) => {
+            console.log('nam');
+            $.ajax({
+                type: 'POST',
+                url: '/users/uploadImage',
+                data: formData,
+                processData: false,
+                success: (data) =>{
+                    showSuccessNotify("Upload thanh cong!");
+                },
+                error: (data) =>{
+                    showFailNotify('Upload khong thanh cong!');
+                },
+                crossDomain: true,
+            });
+        });
+    });
+    
+
+
+
+</script>

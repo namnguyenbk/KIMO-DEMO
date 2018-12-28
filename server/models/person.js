@@ -31,6 +31,7 @@ const userSchema = new Schema({
 });
 
 const userInfoSchema = new Schema({
+  id: {type: String},
   firstname: { type: String },
   midname: { type: String,  },
   lastname: { type: String,  },
@@ -38,18 +39,25 @@ const userInfoSchema = new Schema({
   phonenumber: { type: String,  },
   email: { type: String, },
   address: { type: String,  },
+  city: { type: String,  },
   des: { type: String, },
   cover_image: { type: String,  },
   cover_image_web: { type: String, },
   avatar: { type: String, },
+  status: { type: String, },
   username: { type: String,},
   url: { type: String,  },
 });
 
+const follow = new Schema({
+  follower: { type: String },
+  user_follow: { type: String,  },
+});
 
 
 module.exports = {
   User: mongoose.model('User', userSchema),
   UserInfo: mongoose.model('UserInfo', userInfoSchema),
+  Follow: mongoose.model('Follow', follow),
 }
 
